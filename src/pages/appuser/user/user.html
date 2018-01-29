@@ -9,16 +9,7 @@
             <option  value = "" >全部</option>
             <option  value = "10" >正常</option>
             <option  value = "20" >禁用</option>
-          </select>
-      信用:<select id = "sel"  [(ngModel)]="find.credit">
-            <option  value = "">全部</option>
-            <option  value = "0">零星</option>
-            <option  value = "1">一星</option>
-            <option  value = "2">二星</option>
-            <option  value = "3">三星</option>
-            <option  value = "4">四星</option>
-            <option  value = "5">五星</option>
-          </select>
+          </select> 
       <button type="button" class="btn btn-primary" (click)='loadDataOne()'>搜索</button>
 </div>
 
@@ -38,13 +29,11 @@
                 <th>姓名</th>
                 <th>手机</th>
                 <th  (click)='loadDataScore()'>积分<span>↑↓</span></th>
-                <th  (click)='loadshadowScore()'>影子积分<span>↑↓</span></th>
-                <th (click)='loadbalance()'>余额<span>↑↓</span></th>
-                
-                <th>VIP</th>
+                <th>当天盈亏</th>
+                <th>累计投注金额</th>
+                <th>累计中奖金额</th>
                 <th>注册时间</th>
                 <th>状态</th>
-                <th>信用星</th>
                 <th>操作</th>
             </tr>
         </thead>
@@ -56,13 +45,12 @@
                 <td>{{item.name}}</td>
                 <td>{{item.mobile}}</td>
                 <td>{{item.score}}</td>
-                <td>{{item.shadowScore}}</td>
-                <td>{{item.balance}}</td>
-                
+                <td>{{item.currentProfit}}</td>
+                <td>{{item.bettingAmout}}</td>
+                <td>{{item.winingAmout}}</td>
                 <td>{{item.userType==20?"是":"否"}}</td>
                 <td>{{utils.formatDate(item.createTime,'yyyy-MM-dd HH:mm:ss')}}</td>
                 <td>{{item.state==10?"正常":item.state==20?"禁用":"删除"}}</td>
-                <td>{{item.credit}}</td>
                 <td>
                   <button type="button" *ngIf="item.state==20||item.state==10"(click)="showEditName(item)" class="btn btn-info btn-xs">编辑姓名</button>
                   <button type='button' *ngIf="item.state==10" (click)='disable(item)' class='btn btn-danger btn-xs'>禁用</button>
@@ -121,7 +109,7 @@
                        </tr>
                 </thead>
 
-            </table>                    
+            </table>
             <b>一级下线</b>
             <table class="table table-bordered table-hover">
                 <thead>
@@ -141,10 +129,9 @@
                        </tr>
                 </tbody>
 
-            
+
             </table>
-    </div>    
+    </div>
 
 
 </div>
-

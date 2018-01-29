@@ -39,7 +39,7 @@ export class UserPage {
     virtualCoinCount:number = 0;
 
 
-    score:any = { 
+    score:any = {
       score:""
     };   //积分
     balance:any = {
@@ -73,7 +73,7 @@ export class UserPage {
 
     /**
      * 积分排序
-     * 
+     *
      */
     loadDataScore(){
 
@@ -83,12 +83,12 @@ export class UserPage {
         }else{
             this.score.score = "2";
         }
-      
+
         this.httpService.pagination({
-            url:'/appUser/userTab',
+            url:'/webUser/userTab',
             data:this.score
         });
-      
+
     }
 
 
@@ -99,9 +99,9 @@ export class UserPage {
         }else{
             this.balance.balance = "2";
         }
-      
+
         this.httpService.pagination({
-            url:'/appUser/userTab',
+            url:'/webUser/userTab',
             data:this.balance
         });
     }
@@ -113,9 +113,9 @@ export class UserPage {
         }else{
             this.shadowScore.shadowScore = "2";
         }
-      
+
         this.httpService.pagination({
-            url:'/appUser/userTab',
+            url:'/webUser/userTab',
             data:this.shadowScore
         });
 
@@ -129,9 +129,9 @@ export class UserPage {
         }else{
             this.virtualCoin.virtualCoin = "2";
         }
-      
+
         this.httpService.pagination({
-            url:'/appUser/userTab',
+            url:'/webUser/userTab',
             data:this.virtualCoin
         });
 
@@ -152,7 +152,7 @@ export class UserPage {
     */
     loadData(){
         this.httpService.pagination({
-            url:'/appUser/userTab',
+            url:'/webUser/userTab',
             data:this.find
         });
     }
@@ -168,7 +168,7 @@ export class UserPage {
         return false;
       }
       this.httpService.post({
-          url:'/appUser/upUserState',
+          url:'/webUser/upUserState',
           data:this.upUser
       }).subscribe((data:any)=>{
           if(data.code==='0000'){
@@ -195,7 +195,7 @@ export class UserPage {
             return false;
           }
           userPage.httpService.post({
-              url:'/appUser/upUserState',
+              url:'/webUser/upUserState',
               data:upUser
           }).subscribe((data:any)=>{
               layer.closeAll();
@@ -216,7 +216,7 @@ export class UserPage {
       });
     }
 
-     
+
     /**
     * 弹出等级面板
     */
@@ -224,7 +224,7 @@ export class UserPage {
         this.showPage = 2;
         this.editDate = Utils.copyObject(item);
         this.httpService.get({
-            url:'/appUser/loadLower',
+            url:'/webUser/loadLower',
             data:{parentId:item.id}
         }).subscribe((data:any)=>{
             if(data.code==='0000'){
@@ -237,7 +237,7 @@ export class UserPage {
         });
 
         this.httpService.get({
-            url:'/appUser/loadParent',
+            url:'/webUser/loadParent',
             data:{id:item.parentId}
         }).subscribe((data:any)=>{
             if(data.code==='0000'){
@@ -248,7 +248,7 @@ export class UserPage {
                 Utils.show("系统异常，请联系管理员");
             }
         });
-        
+
         layer.open({
             title: "查看层级",
             btn: ["确认","退出"],
@@ -266,7 +266,7 @@ export class UserPage {
         });
 
 
-    } 
+    }
 
 
 
@@ -300,7 +300,7 @@ export class UserPage {
                   return false;
               }
               userPage.httpService.post({
-                  url:'/appUser/upUserName',
+                  url:'/webUser/upUserName',
                   data:userPage.editDate
               }).subscribe((data:any)=>{
                   layer.closeAll();
@@ -322,6 +322,6 @@ export class UserPage {
         });
     }
     bankCard(item:any){
-        this.router.navigate(['/common/main/appuser/bankcard'],{relativeTo: this.aroute,queryParams: { uid: item.uid }});
+        this.router.navigate(['/common/main/webUser/bankcard'],{relativeTo: this.aroute,queryParams: { uid: item.uid }});
     }
 }

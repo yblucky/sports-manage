@@ -47,6 +47,7 @@ export class LoginPage {
                     loginName:this.loginName,
                     password:this.password,
                     imgKey:this.imgKey,
+                    roleType:'10',
                     picCode:this.imgCode
                 }
             }).subscribe((data:any)=>{

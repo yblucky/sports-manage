@@ -31,7 +31,7 @@ export class MainPage {
 
     loadUser(){
         this.httpService.get({
-            url:'/user/findUser',
+            url:'/sysUser/findUser',
             data:{}
         }).subscribe((data:any)=>{
             if(data.code==='0000'){

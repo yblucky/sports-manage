@@ -38,6 +38,8 @@ import { RechargeOrder } from '../transaction/rechargeOrder/rechargeOrder';
 import { CoinCurrencyRecordPage } from '../transaction/coinCurrencyRecord/coinCurrencyRecord';
 import { CoinCurrencyOrderPage } from '../transaction/coinCurrencyOrder/coinCurrencyOrder';
 import { IcoRecordPage } from '../transaction/icoRecord/icoRecord';
+//代理管理
+import { AgentInfoPage } from '../system/agentInfo/agentInfo';
 
 
 @NgModule({
@@ -69,7 +71,8 @@ import { IcoRecordPage } from '../transaction/icoRecord/icoRecord';
         CoinCurrencyOrderPage,
         IpconnectPage,
         IcoPage,
-        IcoRecordPage
+        IcoRecordPage,
+        AgentInfoPage
     ],
     imports: [
         BrowserModule,

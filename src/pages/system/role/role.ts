@@ -28,7 +28,7 @@ export class RolePage {
     */
     loadRoles(){
         this.httpService.get({
-            url:'/user/findRoles',
+            url:'/sysUser/findRoles',
             data:{}
         }).subscribe((data:any)=>{
             if(data.code==='0000'){

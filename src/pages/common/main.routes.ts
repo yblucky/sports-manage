@@ -27,6 +27,7 @@ import { CoinCurrencyOrderPage } from '../transaction/coinCurrencyOrder/coinCurr
 import { IpconnectPage } from '../system/ipconnect/ipconnect';
 import { IcoPage } from '../system/ico/ico';
 import { IcoRecordPage } from '../transaction/icoRecord/icoRecord';
+import { AgentInfoPage } from '../system/agentInfo/agentInfo';
 
 
 export const MainRoutes: Routes = [ // Routes类型的数组
@@ -111,6 +112,9 @@ export const MainRoutes: Routes = [ // Routes类型的数组
     },{
         path     : 'transaction/icoRecord',//Ico流水记录
         component: IcoRecordPage
+    },{
+        path     : 'system/agentInfo',//代理列表
+        component: AgentInfoPage
     },{
         path     : '**',
         component: HomePage
