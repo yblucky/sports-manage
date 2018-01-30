@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 declare var $: any;
 declare var layer: any;
-var withdrawOrder: any;
+var nowPage: any;
 
 @Component({
     selector   : 'page-withdrawOrder',
@@ -16,7 +16,6 @@ export class WithdrawOrder {
     find:any={
       uid:"",
       mobile:"",
-      orderId:"",
       state:"",
       startTime:"",
       endTime:""
@@ -37,7 +36,7 @@ export class WithdrawOrder {
           this.find.state=this.aroute.snapshot.queryParams["state"];
           this.httpService.currentPage=1;
         }
-        withdrawOrder=this;
+        nowPage=this;
         this.loadDataOne();
     }
 
@@ -54,53 +53,61 @@ export class WithdrawOrder {
     */
     loadData(){
         this.httpService.pagination({
-            url:'/transactionPage/withdraw',
+            url:'/webWithDraw/findAll',
             data:this.find
         });
     }
 
-    /**
-    * 弹出编辑面板
-    */
-    showEdit(item:any){
-        this.editInfo = Utils.copyObject(item);
-        this.httpService.get({
-              url:'/transactionPage/judge',
-              data:{id:this.editInfo.id}
-        }).subscribe((data:any)=>{
-              if(data.code === "0000"){
-                  this.judge=Utils.copyObject(data.data);
-                  layer.open({
-                      title: "订单纠纷处理",
-                      btn: ["保存","取消"],
-                      type: 1,
-                      closeBtn: 0,
-                      shade: 0,
-                      fixed: true,
-                      shadeClose: false,
-                      resize: false,
-                      area: ['627px','379px'],
-                      content: $("#editPanel"),
-                      yes: function(index:number){
-                        if(withdrawOrder.orderType==undefined){
-                          alert("请选择审判结果!");
-                          return;
-                        }
-                        withdrawOrder.httpService.post({
-                              url:'/transactionPage/judgeUser',
-                              data:{userid:withdrawOrder.orderType,orderId:withdrawOrder.editInfo.id}
-                        }).subscribe((data:any)=>{
-                              if(data.code === "0000"){
-                                alert(data.message);
-                                layer.closeAll();
-                                withdrawOrder.loadData();
-                              }else{
-                                alert(data.message);
-                              }
-                        });
-                      }
-                  });
-              }
+
+    confirmPayee(item:any){
+        layer.confirm('您确定打款此数据吗？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            nowPage.httpService.post({
+                url:'/webWithDraw/successState',
+                data:item
+            }).subscribe((data:any)=>{
+                layer.closeAll();
+                if(data.code==='0000'){
+                    //删除成功
+                   layer.msg(data.message,{
+                       icon: '1',
+                       time: 2000
+                   },function(){
+                       nowPage.loadData();
+                   });
+                }else if(data.code==='9999'){
+                    Utils.show(data.message);
+                }else{
+                    Utils.show("系统异常，请联系管理员");
+                }
+            });
+        });
+    }
+
+    errorState(item:any){
+        layer.confirm('您确定驳回此数据吗？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            nowPage.httpService.post({
+                url:'/webWithDraw/errorState',
+                data:item
+            }).subscribe((data:any)=>{
+                layer.closeAll();
+                if(data.code==='0000'){
+                    //删除成功
+                   layer.msg(data.message,{
+                       icon: '1',
+                       time: 2000
+                   },function(){
+                       nowPage.loadData();
+                   });
+                }else if(data.code==='9999'){
+                    Utils.show(data.message);
+                }else{
+                    Utils.show("系统异常，请联系管理员");
+                }
+            });
         });
     }
 

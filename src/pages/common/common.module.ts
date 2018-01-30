@@ -40,6 +40,7 @@ import { CoinCurrencyOrderPage } from '../transaction/coinCurrencyOrder/coinCurr
 import { IcoRecordPage } from '../transaction/icoRecord/icoRecord';
 //代理管理
 import { AgentInfoPage } from '../system/agentInfo/agentInfo';
+import { AgentLevelPage } from '../system/agentLevel/agentLevel';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { AgentInfoPage } from '../system/agentInfo/agentInfo';
         IpconnectPage,
         IcoPage,
         IcoRecordPage,
-        AgentInfoPage
+        AgentInfoPage,
+        AgentLevelPage, 
     ],
     imports: [
         BrowserModule,

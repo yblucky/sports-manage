@@ -22,6 +22,7 @@ export class UserPage {
       credit:""
     };
     upUser:any={};
+    rechargeData:any={};
     editDate:any={};
     showTime:any = new Date();
     showPage:any = 1;  //1:修改 2:显示等级
@@ -71,26 +72,6 @@ export class UserPage {
       this.loadData();
     }
 
-    /**
-     * 积分排序
-     *
-     */
-    loadDataScore(){
-
-        this.scoreCount++;
-        if(this.scoreCount % 2 ==1){
-            this.score.score = "1";
-        }else{
-            this.score.score = "2";
-        }
-
-        this.httpService.pagination({
-            url:'/webUser/userTab',
-            data:this.score
-        });
-
-    }
-
 
     loadbalance(){
         this.balanceCount++;
@@ -105,46 +86,6 @@ export class UserPage {
             data:this.balance
         });
     }
-
-    loadshadowScore(){
-        this.shadowScoreCount++;
-        if(this.shadowScoreCount % 2 ==1){
-            this.shadowScore.shadowScore = "1";
-        }else{
-            this.shadowScore.shadowScore = "2";
-        }
-
-        this.httpService.pagination({
-            url:'/webUser/userTab',
-            data:this.shadowScore
-        });
-
-
-    }
-
-    loadvirtualCoin(){
-        this.virtualCoinCount++;
-        if(this.virtualCoinCount % 2 ==1){
-            this.virtualCoin.virtualCoin = "1";
-        }else{
-            this.virtualCoin.virtualCoin = "2";
-        }
-
-        this.httpService.pagination({
-            url:'/webUser/userTab',
-            data:this.virtualCoin
-        });
-
-
-    }
-
-
-
-
-
-
-
-
 
 
     /**
@@ -268,13 +209,58 @@ export class UserPage {
 
     }
 
-
-
-
-
-
-
-
+    /**
+    * 弹出充值面板
+    */
+    showRecharge(){
+        this.rechargeData = {
+              uid: "",
+              balance: 0
+        };
+        layer.open({
+            title: "充值",
+            btn: ["保存","退出"],
+            type: 1,
+            closeBtn: 0,
+            shade: 0,
+            fixed: true,
+            shadeClose: false,
+            resize: false,
+            area: ['350px','250px'],
+            content: $("#rechargePanel"),
+            yes: function(index:number){
+              if(Utils.isEmpty(userPage.rechargeData.uid)){
+                  layer.tips('用户UID不能为空', '#uid',{tips: 1});
+                  $("#uid").focus();
+                  return false;
+              }
+              if(Utils.isMobile(userPage.rechargeData.balance)){
+                  layer.tips('请输入正确的数额', '#balance',{tips: 1});
+                  $("#balance").focus();
+                  return false;
+              }
+              userPage.httpService.post({
+                  url:'/webUser/recharge',
+                  data:userPage.rechargeData
+              }).subscribe((data:any)=>{
+                  layer.closeAll();
+                  if(data.code==='0000'){
+                      //修改成功
+                      layer.msg(data.message,{
+                          icon: '1',
+                          time: 2000
+                      },function(){
+                          userPage.loadData();
+                      });
+                  }else if(data.code==='9999'){
+                        Utils.show(data.message);
+                  }else{
+                        Utils.show("系统异常，请联系管理员");
+                  }
+              });
+            }
+        });
+    }
 
     /**
     * 弹出编辑面板

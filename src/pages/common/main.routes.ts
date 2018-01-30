@@ -28,6 +28,7 @@ import { IpconnectPage } from '../system/ipconnect/ipconnect';
 import { IcoPage } from '../system/ico/ico';
 import { IcoRecordPage } from '../transaction/icoRecord/icoRecord';
 import { AgentInfoPage } from '../system/agentInfo/agentInfo';
+import { AgentLevelPage } from '../system/agentLevel/agentLevel'; 
 
 
 export const MainRoutes: Routes = [ // Routes类型的数组
@@ -115,6 +116,9 @@ export const MainRoutes: Routes = [ // Routes类型的数组
     },{
         path     : 'system/agentInfo',//代理列表
         component: AgentInfoPage
+    },{
+        path     : 'system/agentLevel',//代理等级参数
+        component: AgentLevelPage
     },{
         path     : '**',
         component: HomePage
