@@ -38,6 +38,7 @@ import { RechargeOrder } from '../transaction/rechargeOrder/rechargeOrder';
 import { CoinCurrencyRecordPage } from '../transaction/coinCurrencyRecord/coinCurrencyRecord';
 import { CoinCurrencyOrderPage } from '../transaction/coinCurrencyOrder/coinCurrencyOrder';
 import { IcoRecordPage } from '../transaction/icoRecord/icoRecord';
+import { BetsOrderPage } from '../transaction/betsOrder/betsOrder';
 //代理管理
 import { AgentInfoPage } from '../system/agentInfo/agentInfo';
 import { AgentLevelPage } from '../system/agentLevel/agentLevel';
@@ -74,7 +75,8 @@ import { AgentLevelPage } from '../system/agentLevel/agentLevel';
         IcoPage,
         IcoRecordPage,
         AgentInfoPage,
-        AgentLevelPage, 
+        AgentLevelPage,
+        BetsOrderPage, 
     ],
     imports: [
         BrowserModule,
