@@ -30,6 +30,7 @@ import { IcoRecordPage } from '../transaction/icoRecord/icoRecord';
 import { AgentInfoPage } from '../system/agentInfo/agentInfo';
 import { AgentLevelPage } from '../system/agentLevel/agentLevel';
 import { BetsOrderPage } from '../transaction/betsOrder/betsOrder';
+import { RevenueListPage } from '../transaction/revenueList/revenueList';
 
 
 export const MainRoutes: Routes = [ // Routes类型的数组
@@ -123,6 +124,9 @@ export const MainRoutes: Routes = [ // Routes类型的数组
     },{
         path     : 'transaction/betsOrder',//注单列表
         component: BetsOrderPage
+    },{
+        path     : 'transaction/revenueList',//营收列表
+        component: RevenueListPage
     },{
         path     : '**',
         component: HomePage
