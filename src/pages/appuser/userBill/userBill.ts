@@ -24,7 +24,7 @@ export class UserBillPage {
     };
     currencyType:any;
     busnessType:any;
-    
+
     showTime:any = new Date();
     constructor(private router:Router,private httpService:HttpService,private aroute:ActivatedRoute,private utils:Utils) {
         this.aroute.params.subscribe( params  => {
@@ -46,7 +46,7 @@ export class UserBillPage {
     * 搜索默认第一页
     */
     loadDataOne(){
-      
+
       this.httpService.currentPage=1;
       this.loadData();
       this.loadType();
@@ -57,11 +57,11 @@ export class UserBillPage {
     */
     loadData(){
         this.httpService.pagination({
-            url:'/appBill/findAll',
+            url:'/webBill/findAll',
             data:this.find
         });
 
-       
+
     }
 
      /**
@@ -69,15 +69,15 @@ export class UserBillPage {
      */
      loadType(){
             this.httpService.get({
-                url:'/appBill/findCurrencyType'
+                url:'/webBill/findCurrencyType'
             }).subscribe((data:any)=>{
                 if(data.code==='0000'){
                     this.currencyType = data.data;
-                    for (var prop in this.currencyType) { 
-                     
-                     
+                    for (var prop in this.currencyType) {
+
+
                     }
-                    console.log(this.currencyType); 
+                    console.log(this.currencyType);
                 }else if(data.code==='9999'){
                     Utils.show(data.message);
                 }else{
@@ -86,12 +86,12 @@ export class UserBillPage {
             });
 
             this.httpService.get({
-                url:'/appBill/findBusnessType'
+                url:'/webBill/findBusnessType'
             }).subscribe((data:any)=>{
                 if(data.code==='0000'){
 
                     this.busnessType = data.data;
-                
+
                 }else if(data.code==='9999'){
                     Utils.show(data.message);
                 }else{
