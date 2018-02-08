@@ -49,7 +49,7 @@ export class UserBillPage {
 
       this.httpService.currentPage=1;
       this.loadData();
-      this.loadType();
+      //this.loadType();
     }
 
     /**
@@ -102,5 +102,8 @@ export class UserBillPage {
 
      }
 
+     Goto(item:any){
+         this.router.navigate(['/common/main/transaction/betsOrder'],{relativeTo: this.aroute,queryParams: { businessNumber: item.businessNumber }});
+     }
 
 }

@@ -225,52 +225,6 @@ export class AgentLevelPage {
 
     validator(){
         return true;
-        if(Utils.isEmpty(this.subData.starLevelName)){
-            layer.tips('星级不能为空', '#starLevelName',{tips: 1});
-            $("#starLevelName").focus();
-            return false;
-        }
-        if(Utils.isEmpty(this.subData.minScore)){
-            layer.tips('星级最小积分不能为空', '#minScore',{tips: 1});
-            $("#minScore").focus();
-            return false;
-        }
-        if(Utils.isEmpty(this.subData.maxScore)){
-            layer.tips('星级最大积分不能为空', '#maxScore',{tips: 1});
-            $("#maxScore").focus();
-            return false;
-        }
-        if(Utils.isEmpty(this.subData.enjoyLevel)){
-            layer.tips('对应星级享受代数不能为空', '#enjoyLevel',{tips: 1});
-            $("#enjoyLevel").focus();
-            return false;
-        }
-        if(Utils.isEmpty(this.subData.reachStarLevel)){
-            layer.tips('达到星级所需直推代数不能为空', '#reachStarLevel',{tips: 1});
-            $("#reachStarLevel").focus();
-            return false;
-        }
-        if(Utils.isEmpty(this.subData.exchangeMinScale)){
-            layer.tips('余额兑换积分上级获取影子积分最小比例不能为空', '#exchangeMinScale',{tips: 1});
-            $("#exchangeMinScale").focus();
-            return false;
-        }
-        if(Utils.isEmpty(this.subData.exchangeMaxScale)){
-            layer.tips('余额兑换积分上级获取影子积分最大比例不能为空', '#exchangeMaxScale',{tips: 1});
-            $("#exchangeMaxScale").focus();
-            return false;
-        }
-        if(Utils.isEmpty(this.subData.transferMinScale)){
-            layer.tips('转账上级获取影子积分最小比例', '#transferMinScale',{tips: 1});
-            $("#transferMinScale").focus();
-            return false;
-        }
-        if(Utils.isEmpty(this.subData.transferMaxScale)){
-            layer.tips('转账上级获取影子积分最大比例', '#transferMaxScale',{tips: 1});
-            $("#transferMaxScale").focus();
-            return false;
-        }
-
-        return true;
+         
     }
 }

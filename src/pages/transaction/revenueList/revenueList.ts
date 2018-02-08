@@ -61,7 +61,7 @@ export class RevenueListPage {
     /**
     * 搜索默认第一页
     */
-    showList(date){
+    showList(date:any){
       switch(date){
         case 1 :
           this.find.startTime=new date();

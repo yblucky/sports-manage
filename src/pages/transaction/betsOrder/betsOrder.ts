@@ -18,7 +18,8 @@ export class BetsOrderPage {
       mobile:"",
       state:"",
       startTime:"",
-      endTime:""
+      endTime:"",
+      businessNumber:""
     };
     judge:any={};
     orderType:string;
@@ -29,7 +30,7 @@ export class BetsOrderPage {
             this.showTime = new Date();
         });
         if(this.aroute.snapshot.queryParams["order"]!=undefined){
-          this.find.orderId=this.aroute.snapshot.queryParams["order"];
+          this.find.businessNumber=this.aroute.snapshot.queryParams["businessNumber"];
           this.httpService.currentPage=1;
         }
         if(this.aroute.snapshot.queryParams["state"]!=undefined){
@@ -53,7 +54,7 @@ export class BetsOrderPage {
     */
     loadData(){
         this.httpService.pagination({
-            url:'/webWithDraw/findAll',
+            url:'/finance/findAll',
             data:this.find
         });
     }

@@ -3,7 +3,7 @@
 <div class="search-box">
       uid: <input [(ngModel)]="find.uid" />
       手机号码: <input [(ngModel)]="find.mobile" style="width: 120px"/>
-      货币类型:<select  [(ngModel)]="find.currencyType" style="width: 120px"> 
+      货币类型:<select  [(ngModel)]="find.currencyType" style="width: 120px">
                <option  value="">全部</option>
                <option  *ngFor="let b of currencyType" value="{{b.key}}">{{b.val}}</option>
           </select>
@@ -29,12 +29,13 @@
                 <th>uid</th>
                 <th>手机</th>
                 <th>金额</th>
+                <th>用户交易前数额</th>
                 <th>用户交易后数额</th>
                 <th>货币类型</th>
                 <th>业务类型</th>
-                <th>扩展</th>
                 <th>交易时间</th>
                 <th>备注</th>
+                <th>扩展</th>
             </tr>
         </thead>
         <tbody>
@@ -42,14 +43,15 @@
                 <td>{{item.uid}}</td>
                 <td>{{item.mobile}}</td>
                 <th>{{item.balance}}</th>
-                <th>{{item.userBalance}}</th>
+                <th>{{item.beforeBalance}}</th>
+                <th>{{item.afterBalance}}</th>
                 <td>{{item.currencyTypeName}}</td>
                 <td>{{item.busnessTypeName}}</td>
-                <td>
-                  <button type="button" *ngIf="item.transactionState!=21&&item.transactionState!=31" (click)="Goto(item)" class="btn btn-info btn-xs">{{item.targetOrder}}</button>
-                </td>
                 <td>{{utils.formatDate(item.createTime,'yyyy-MM-dd HH:mm:ss')}}</td>
                 <td>{{item.remark}}</td>
+                <td>
+                  <button type="button" *ngIf="item.gameType!=21&&item.gameType!=31" (click)="Goto(item)" class="btn btn-info btn-xs">查看详情</button>
+                </td>
             </tr>
         </tbody>
     </table>
