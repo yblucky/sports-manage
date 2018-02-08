@@ -1,8 +1,8 @@
 
 <!--搜索区域-->
 <div class="search-box">
-    统计ip访问次数:<input [(ngModel)]="find.connectCount"/><span style="color: red">（默认大于500）</span>
-    <button type="button" class="btn btn-primary" (click)='loadData()'>搜索</button>
+    <!-- 统计ip访问次数:<input [(ngModel)]="find.connectCount"/><span style="color: red">（默认大于500）</span>
+    <button type="button" class="btn btn-primary" (click)='loadData()'>搜索</button> -->
 </div>
 
 <!--按钮区域-->
@@ -13,16 +13,20 @@
     <table class="table table-bordered table-hover">
         <thead>
             <tr class="active">
-                <th width="20%">ip</th>
-                <th width="10%">访问次数</th>
-                <th width="70%">&nbsp;</th>
+                <th>序号</th>
+                <th>用户名</th>
+                <th>类型</th>
+                <th>ip</th>
+                <th>操作时间</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of httpService.items">
-                <td>{{item.ipAddress}}</td>
-                <td>{{item.connectCount}}</td>
-                <td>&nbsp;</td>
+            <tr *ngFor="let item of httpService.items; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{item.userName}}</td>
+                <td>{{item.optType}}</td>
+                <td>{{item.ip}}</td>
+                <td>{{utils.formatDate(item.optDate,'yyyy-MM-dd HH:mm:ss')}}</td>
             </tr>
         </tbody>
     </table>
@@ -46,4 +50,3 @@
         </li>
     </ul>
 </div>
-

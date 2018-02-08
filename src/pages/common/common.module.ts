@@ -21,10 +21,10 @@ import { UserPage } from '../appuser/user/user';
 import { BankCardPage } from '../appuser/bankcard/bankcard';
 import { UserBillPage } from '../appuser/userBill/userBill';
 //交易管理
-import { WithdrawOrder } from '../transaction/withdrawOrder/withdrawOrder';
-import { RechargeOrder } from '../transaction/rechargeOrder/rechargeOrder';
-import { BetsOrderPage } from '../transaction/betsOrder/betsOrder';
-import { RevenueListPage } from '../transaction/revenueList/revenueList';
+import { WithdrawOrder } from '../finance/withdrawOrder/withdrawOrder';
+import { RechargeOrder } from '../finance/rechargeOrder/rechargeOrder';
+import { BetsOrderPage } from '../finance/betsOrder/betsOrder';
+import { RevenueListPage } from '../finance/revenueList/revenueList';
 //代理管理
 import { AgentInfoPage } from '../system/agentInfo/agentInfo';
 import { AgentLevelPage } from '../system/agentLevel/agentLevel';
@@ -40,7 +40,7 @@ import { AgentLevelPage } from '../system/agentLevel/agentLevel';
         RolePage,
         UpdatePwPage,
         UserPage,
-        BankCardPage, 
+        BankCardPage,
         WithdrawOrder,
         RechargeOrder,
         UserBillPage,

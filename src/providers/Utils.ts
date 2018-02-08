@@ -206,4 +206,12 @@ export class Utils {
         return !isNaN(value);
     }
 
+    /**
+    * 替换空值
+    * @param value
+    * @returns {string}
+    */
+    static ifNull(value:any,repValue:any){
+        return !Utils.isEmpty(value)?value:repValue;
+    }
 }

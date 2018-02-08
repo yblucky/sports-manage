@@ -16,24 +16,20 @@ var homePage: any;
     styleUrls: ['./home.scss']
 })
 export class HomePage {
-    orderStatisticsCount:any={
-      todayOrder:"",
-      PayCount:"",
-      WithdrawCount:"",
-      STBRollOut:"",
-      STBExchange:""
+    todayData:any={
+      todayBettingAmout:0,
+      todayRechgerAmount:0,
+      WithdrawCount:0,
+      currentProfit:0,
+      totayReturnWater:0
     };
-    userCount:any={
-      userStatistics:{
-        balance:"",
-        score:"",
-        virtualCoin:"",
-        userCount:""
-      },
-      UserWithdrawCount:"",
-      toDayuserCount:""
+    totalData:any={
+      totalUserCount:0,
+      UserWithdrawCount:0,
+      totalProfit:0,
+      totalBalance:0
     };
-    coinManage:any;//币种数量
+    registerUserCount:any;//用户总数
     orderType:string="10";
     showTime:any = new Date();
     highChartOptions:any={};
@@ -47,37 +43,22 @@ export class HomePage {
 
     orderStatistics(){
       this.httpService.get({
-            url:'/homePage/orderStatistics',
+            url:'/home/findAll',
             data:[]
       }).subscribe((data:any)=>{
             if(data.code === "0000"){
-                this.orderStatisticsCount=Utils.copyObject(data.data);
+                this.todayData.todayBettingAmout=Utils.ifNull(data.data.userSum.bettingAmout,0);
+                this.todayData.todayRechgerAmount=Utils.ifNull(data.data.todayData.back_recharge,0);
+                this.todayData.WithdrawCount=Utils.ifNull(data.data.todayData.withdrawals,0);
+                this.todayData.currentProfit=Utils.ifNull(data.data.userSum.currentProfit,0);
+                this.todayData.totayReturnWater=Utils.ifNull(data.data.todayData.return_water,0);
+                this.registerUserCount=Utils.ifNull(data.data.registerUserCount,0);
+                this.totalData.totalUserCount=Utils.ifNull(data.data.userSum.userCount,0);
+                this.totalData.UserWithdrawCount=Utils.ifNull(data.data.totalData.withdrawals,0);
+                // this.totalData.totalProfit=data.data.totalData.userCount;
+                this.totalData.totalBalance=Utils.ifNull(data.data.userSum.balance,0);
             }
       });
-      this.httpService.get({
-            url:'/homePage/operationStatistics',
-            data:[]
-      }).subscribe((data:any)=>{
-            if(data.code === "0000"){
-                this.userCount=Utils.copyObject(data.data);
-            }
-      });
-      this.reportAjax('10');
-
-
-      this.httpService.get({
-            url:'/homePage/coinManage',
-            data:[]
-      }).subscribe((data:any)=>{
-            if(data.code === "0000"){
-                this.coinManage=Utils.copyObject(data.data);
-            }
-      });
-      //获取当日币种交易总数
-
-
-
-
 
     }
 

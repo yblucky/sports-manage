@@ -3,28 +3,28 @@
     <div class="title-div">
       <div class="row-tab" (click)="href('1')">
         <img src="/assets/images/jrzz.png"/>
-        <h1>{{orderStatisticsCount.todayOrder}}</h1>
-        <div>今日转账/收款订单</div>
+        <h1>{{todayData.todayBettingAmout}}</h1>
+        <div>今日投注总额</div>
       </div>
       <div class="row-tab" (click)="href('2')">
         <img src="/assets/images/cz.png"/>
-        <h1>{{orderStatisticsCount.PayCount}}</h1>
-        <div>待匹配充值订单</div>
+        <h1>{{todayData.todayRechgerAmount}}</h1>
+        <div>今日充值总额</div>
       </div>
       <div class="row-tab" (click)="href('3')">
         <img src="/assets/images/tx.png"/>
-        <h1>{{orderStatisticsCount.WithdrawCount}}</h1>
-        <div>待匹配提现订单</div>
+        <h1>{{todayData.WithdrawCount}}</h1>
+        <div>待审核提现订单</div>
       </div>
       <div class="row-tab" (click)="href('4')">
         <img src="/assets/images/STBzc.png"/>
-        <h1>{{orderStatisticsCount.STBRollOut}}</h1>
-        <div>今日速通宝转出订单</div>
+        <h1>{{todayData.currentProfit}}</h1>
+        <div>今日盈亏总额</div>
       </div>
       <div class="row-tab" (click)="href('5')">
         <img src="/assets/images/lsjl.png"/>
-        <h1>{{orderStatisticsCount.AppCurrencyRecordCount}}</h1>
-        <div>今日币种交易记录总数</div>
+        <h1>{{todayData.totayReturnWater}}</h1>
+        <div>今日返水总额</div>
       </div>
     </div>
     <!-- 运营统计 -->
@@ -40,35 +40,35 @@
         </div> -->
 
         <div class="statistics-content-tab">
-          <h3>{{userCount.userStatistics.balance}}</h3>
+          <h3>{{totalData.totalBalance}}</h3>
           <div>用户余额总计</div>
         </div>
-        <div class="statistics-content-tab">
+        <!-- <div class="statistics-content-tab">
           <h3>{{userCount.userStatistics.score}}</h3>
           <div>用户积分总计</div>
-        </div>
+        </div> -->
        <!--  <div class="statistics-content-tab">
          <h3>{{userCount.userStatistics.virtualCoin}}</h3>
          <div>速通宝总计</div>
        </div> -->
         <div class="statistics-content-tab">
-          <h3>{{userCount.userStatistics.userCount}}</h3>
+          <h3>{{totalData.totalUserCount}}</h3>
           <div>用户数量总计</div>
         </div>
         <div class="statistics-content-tab">
-          <h3>{{userCount.UserWithdrawCount}}</h3>
+          <h3>{{totalData.UserWithdrawCount}}</h3>
           <div>用户提现总计</div>
         </div>
         <div class="statistics-content-tab">
-          <h3>{{userCount.toDayuserCount}}</h3>
+          <h3>{{registerUserCount}}</h3>
           <div>今日新增用户</div>
         </div>
         <div class="statistics-content-tab">
-          <h3>{{userCount.toDayRelease}}</h3>
-          <div>今日用户积分释放总计</div>
+          <h3>{{totalData.totalProfit}}</h3>
+          <div>用户盈亏总计</div>
         </div>
 
-        <div class="statistics-content-tab">
+        <!-- <div class="statistics-content-tab">
           <h3>{{userCount.userStatistics.shadowScore}}</h3>
           <div>用户影子积分总计</div>
         </div>
@@ -76,7 +76,7 @@
         <div class="statistics-content-tab">
           <h3>{{userCount.walletBalance}}</h3>
           <div>钱包余额总计</div>
-        </div>
+        </div> -->
         <div class="statistics-content-tab">
           <h3>&nbsp;</h3>
           <div>&nbsp;</div>
@@ -93,8 +93,8 @@
       </div>
     </div>
     <!-- 报表统计 -->
-    <div class="statement">
-      <div class="statistics-title">
+    <div class="statement" >
+      <div class="statistics-title" style="display:none">
           <img src="/assets/images/lsjl.png"/>
           <h3>历史销售统计</h3>
           <div class="statistics-radio">

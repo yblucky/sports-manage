@@ -103,7 +103,7 @@ export class AgentInfoPage {
             break;
         }
         layer.open({
-            title: "添加参数",
+            title: "新增代理",
             btn: ["保存","退出"],
             type: 1,
             closeBtn: 0,
