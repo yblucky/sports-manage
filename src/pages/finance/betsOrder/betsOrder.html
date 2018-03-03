@@ -1,0 +1,84 @@
+
+<!--搜索区域-->
+<div class="search-box">
+      uid: <input [(ngModel)]="find.uid" />
+      手机:<input [(ngModel)]="find.mobile" />
+      期号:<input [(ngModel)]="find.mobile" />
+      注单号:<input [(ngModel)]="find.mobile" />
+      彩种:<select id =  "sel" [(ngModel)]="find.state">
+            <option  value = "" >全部</option>
+            <option  value = "10" >重庆时时彩</option>
+            <option  value = "20" >北京赛车</option>
+          </select>
+      投注时间:<input [(ngModel)]="find.startTime" type="date"/>-<input [(ngModel)]="find.endTime" type="date" />
+      <button type="button" class="btn btn-primary" (click)='loadDataOne()'>搜索</button>
+</div>
+
+<!--按钮区域-->
+<div class="button-box text-right">
+
+</div>
+
+<!--数据显示区域-->
+<div class="table-box">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr class="active">
+                <th>注单号</th>
+                <th>游戏彩种</th>
+                <th>游戏期号</th>
+                <th>开奖结果</th>
+                <th>游戏状态</th>
+                <th>uid</th>
+                <th>昵称</th>
+                <th>投注类型</th>
+                <th>投注内容</th>
+                <th>投注金额</th>
+                <th>输赢情况</th>
+                <th>赔率</th>
+                <th>投注时间</th>
+                <th>状态</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of httpService.items; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{item.uid}}</td>
+                <td>{{item.nickName}}</td>
+                <td>{{item.mobile}}</td>
+                <td>{{item.amount}}</td>
+                <td>{{item.beforeBalance}}</td>
+                <td>{{item.branch}}</td>
+                <td>{{item.bankCard}}</td>
+                <td>{{utils.formatDate(item.createTime,'yyyy-MM-dd HH:mm:ss')}}</td>
+                <td>{{item.state=="10"?"待打款":
+                      item.state=="20"?"成功":
+                      item.state=="30"?"驳回":"其他"}}
+                </td>
+                <td>
+                  <button type='button' *ngIf="item.state==10" (click)='confirmPayee(item)' class='btn btn-danger btn-xs'>确认打款</button>
+                  <button type="button" *ngIf="item.state==10" (click)="errorState(item)" class="btn btn-info btn-xs">驳回</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--分页区域-->
+<div class="pagination-box text-center">
+    <ul class="pagination">
+        <li [class]="httpService.currentPage==1?'active':''">
+            <a href="javascript:;" (click)="httpService.toFirstPage()">首页</a>
+        </li>
+        <li [class]="httpService.currentPage==1?'disabled':''">
+            <a href="javascript:;"  (click)="httpService.prev()">上一页</a>
+        </li>
+        <li class="disabled"><a href="javascript:;">第{{httpService.currentPage}}页 | 共{{httpService.totalPage}}页</a></li>
+        <li [class]="httpService.currentPage==httpService.totalPage?'disabled':''">
+            <a href="javascript:;" (click)="httpService.next()">下一页</a>
+        </li>
+        <li [class]="httpService.currentPage==httpService.totalPage?'active':''">
+            <a href="javascript:;" (click)="httpService.toEndPage()">末页</a>
+        </li>
+    </ul>
+</div>

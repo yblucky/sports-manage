@@ -1,0 +1,71 @@
+
+<!--搜索区域-->
+<div class="search-box"> 
+      手机:<input [(ngModel)]="find.mobile" />
+      彩种:<select id =  "sel" [(ngModel)]="find.state">
+            <option  value = "" >全部</option>
+            <option  value = "10" >重庆时时彩</option>
+            <option  value = "20" >北京赛车</option>
+          </select>
+      时间:<input [(ngModel)]="find.startTime" type="date"/>-<input [(ngModel)]="find.endTime" type="date" />
+      <button type="button" class="btn btn-primary" (click)='loadDataOne()'>搜索</button>
+</div>
+
+<!--按钮区域-->
+<div class="button-box text-right">
+      <button type="button" class="btn btn-primary" (click)="showList(1)"><span class="fa fa-plus-circle"></span> 今日</button>
+      <button type="button" class="btn btn-primary" (click)="showList(2)"><span class="fa fa-plus-circle"></span> 上一日</button>
+      <button type="button" class="btn btn-primary" (click)="showList(3)"><span class="fa fa-plus-circle"></span> 上周</button>
+      <button type="button" class="btn btn-primary" (click)="showList(4)"><span class="fa fa-plus-circle"></span> 本周</button>
+      <button type="button" class="btn btn-primary" (click)="showList(5)"><span class="fa fa-plus-circle"></span> 上月</button>
+      <button type="button" class="btn btn-primary" (click)="showList(6)"><span class="fa fa-plus-circle"></span> 本月</button>
+</div>
+
+<!--数据显示区域-->
+<div class="table-box">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr class="active">
+                <th>序号</th>
+                <th>代理编号</th>
+                <th>代理昵称</th>
+                <th>下线人数</th>
+                <th>投注积分</th>
+                <th>会员结果</th>
+                <th>备注</th>
+                <th>实际盈亏</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of httpService.items; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{item.id}}</td>
+                <td>{{item.userName}}</td>
+                <td>{{item.betCount}}</td>
+                <td>{{item.betScore}}</td>
+                <td>{{item.memberRs}}</td>
+                <td>{{item.remark}}</td>
+                <td>{{item.agentProfit}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--分页区域-->
+<div class="pagination-box text-center">
+    <ul class="pagination">
+        <li [class]="httpService.currentPage==1?'active':''">
+            <a href="javascript:;" (click)="httpService.toFirstPage()">首页</a>
+        </li>
+        <li [class]="httpService.currentPage==1?'disabled':''">
+            <a href="javascript:;"  (click)="httpService.prev()">上一页</a>
+        </li>
+        <li class="disabled"><a href="javascript:;">第{{httpService.currentPage}}页 | 共{{httpService.totalPage}}页</a></li>
+        <li [class]="httpService.currentPage==httpService.totalPage?'disabled':''">
+            <a href="javascript:;" (click)="httpService.next()">下一页</a>
+        </li>
+        <li [class]="httpService.currentPage==httpService.totalPage?'active':''">
+            <a href="javascript:;" (click)="httpService.toEndPage()">末页</a>
+        </li>
+    </ul>
+</div>
