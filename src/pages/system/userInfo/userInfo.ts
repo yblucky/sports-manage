@@ -31,7 +31,7 @@ export class UserInfoPage {
     */
     loadData(){
         this.httpService.pagination({
-            url:'/user/findAll',
+            url:'/sysUser/findAll',
             data:{}
         });
     }
@@ -41,7 +41,7 @@ export class UserInfoPage {
     */
     loadRoles(){
         this.httpService.get({
-            url:'/user/findRoles',
+            url:'/sysUser/findRoles',
             data:{}
         }).subscribe((data:any)=>{
             if(data.code==='0000'){
@@ -87,7 +87,7 @@ export class UserInfoPage {
             yes: function(index:number){
                 if(nowPage.validator()){
                     nowPage.httpService.post({
-                        url:'/user/add',
+                        url:'/sysUser/add',
                         data:nowPage.subData
                     }).subscribe((data:any)=>{
                         layer.closeAll();
@@ -131,7 +131,7 @@ export class UserInfoPage {
             yes: function(index:number){
                 if(nowPage.validator()){
                     nowPage.httpService.post({
-                        url:'/user/update',
+                        url:'/sysUser/update',
                         data:nowPage.subData
                     }).subscribe((data:any)=>{
                         layer.closeAll();
@@ -159,7 +159,7 @@ export class UserInfoPage {
             btn: ['确定','取消'] //按钮
         }, function(){
             nowPage.httpService.post({
-                url:'/user/delete',
+                url:'/sysUser/delete',
                 data:item
             }).subscribe((data:any)=>{
                 layer.closeAll();
@@ -185,7 +185,7 @@ export class UserInfoPage {
             btn: ['确定','取消'] //按钮
         }, function(){
             nowPage.httpService.post({
-                url:'/user/disable',
+                url:'/sysUser/disable',
                 data:item
             }).subscribe((data:any)=>{
                 layer.closeAll();
@@ -211,7 +211,7 @@ export class UserInfoPage {
             btn: ['确定','取消'] //按钮
         }, function(){
             nowPage.httpService.post({
-                url:'/user/enabled',
+                url:'/sysUser/enabled',
                 data:item
             }).subscribe((data:any)=>{
                 layer.closeAll();

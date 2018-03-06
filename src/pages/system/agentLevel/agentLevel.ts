@@ -65,7 +65,7 @@ export class AgentLevelPage {
             fixed: true,
             shadeClose: false,
             resize: false,
-            area: ['450px','auto'],
+            area: ['850px','auto'],
             content: $("#editPanel"),
             yes: function(index:number){
                 console.log(nowPage.validator());
@@ -109,7 +109,7 @@ export class AgentLevelPage {
             fixed: true,
             shadeClose: false,
             resize: false,
-            area: ['450px','auto'],
+            area: ['850px','auto'],
             content: $("#editPanel"),
             yes: function(index:number){
                 if(nowPage.validator()){
@@ -225,6 +225,6 @@ export class AgentLevelPage {
 
     validator(){
         return true;
-         
+
     }
 }

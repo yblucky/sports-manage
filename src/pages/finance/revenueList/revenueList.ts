@@ -18,7 +18,8 @@ export class RevenueListPage {
       mobile:"",
       state:"",
       startTime:"",
-      endTime:""
+      endTime:"",
+      dateType:""
     };
     judge:any={};
     orderType:string;
@@ -61,35 +62,8 @@ export class RevenueListPage {
     /**
     * 搜索默认第一页
     */
-    showList(date:any){
-      switch(date){
-        case 1 :
-          this.find.startTime=new date();
-          this.find.endTime=new date();
-          break;
-        case 2:
-          this.find.startTime=new date();
-          this.find.endTime=new date();
-          break;
-        case 3:
-          this.find.startTime=new date();
-          this.find.endTime=new date();
-          break;
-        case 4:
-          this.find.startTime=new date();
-          this.find.endTime=new date();
-          break;
-        case 5:
-          this.find.startTime=new date();
-          this.find.endTime=new date();
-          break;
-        case 6:
-          this.find.startTime=new date();
-          this.find.endTime=new date();
-          break;
-        default:
-          break;
-      }
+    showList(dateType:any){
+      this.find.dateType=dateType;
       this.loadDataOne();
     }
 
