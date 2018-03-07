@@ -24,11 +24,11 @@
                 <th>最大提现额度</th>
                 <th>最多下注位数(一字定)</th>
                 <th>最多下注号码(一字定)</th>
-                <th>一字定赔率</th>
+                <!-- <th>一字定赔率</th> -->
                 <th>最多下注位数(二字定)</th>
                 <th>最多组合位数(二字定)</th>
                 <th>最大下注金额(二字定)</th>
-                <th>二字定赔率</th>
+                <!-- <th>二字定赔率</th> -->
                 <th width="8%">操作</th>
             </tr>
         </thead>
@@ -44,11 +44,11 @@
                 <td>{{item.maxWithdrawPerDay}}</td>
                 <td>{{item.maxBetSeats}}</td>
                 <td>{{item.maxBetDigitalNoPerSeat}}</td>
-                <td>{{item.odds}}</td>
+                <!-- <td>{{item.odds}}</td> -->
                 <td>{{item.timeDoubleMaxBetSeats}}</td>
                 <td>{{item.timeDoubleMaxBetKindPerTwoSeats}}</td>
                 <td>{{item.timeDoubleMaxBetNoPerKind}}</td>
-                <td>{{item.timeDoubleOdds}}</td>
+                <!-- <td>{{item.timeDoubleOdds}}</td> -->
                 <td>
                     <button type="button" (click)="showEditPanel(item)" class="btn btn-info btn-xs">编辑</button>
                     <button type="button" (click)="deleteItem(item)" class="btn btn-danger btn-xs">删除</button>
@@ -124,9 +124,9 @@
         <div class="col-sm-4">
             <input type="text"  class="form-control" id="maxBetDigitalNoPerSeat" [(ngModel)]="subData.maxBetDigitalNoPerSeat" placeholder="最多下注号码"/>
         </div>
-        <label class="col-sm-2 control-label"><span class="text-danger">*</span>&nbsp;一字定赔率</label>
+        <label class="col-sm-2 control-label"><span class="text-danger">*</span>&nbsp;最大下注金额(二字定)</label>
         <div class="col-sm-4">
-            <input type="text"  class="form-control" id="odds" [(ngModel)]="subData.odds" placeholder="一字定赔率"/>
+            <input type="text"  class="form-control" id="timeDoubleMaxBetNoPerKind" [(ngModel)]="subData.timeDoubleMaxBetNoPerKind" placeholder="最大下注金额(二字定)"/>
         </div>
     </div>
     <div class="form-group">
@@ -138,16 +138,5 @@
         <div class="col-sm-4">
             <input type="text"  class="form-control" id="timeDoubleMaxBetKindPerTwoSeats" [(ngModel)]="subData.timeDoubleMaxBetKindPerTwoSeats" placeholder="最多组合位数(二字定)"/>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-2 control-label"><span class="text-danger">*</span>&nbsp;最大下注金额(二字定)</label>
-        <div class="col-sm-4">
-            <input type="text"  class="form-control" id="timeDoubleMaxBetNoPerKind" [(ngModel)]="subData.timeDoubleMaxBetNoPerKind" placeholder="最大下注金额(二字定)"/>
-        </div>
-        <label class="col-sm-2 control-label"><span class="text-danger">*</span>&nbsp;二字定赔率</label>
-        <div class="col-sm-4">
-            <input type="text"  class="form-control" id="timeDoubleOdds" [(ngModel)]="subData.timeDoubleOdds" placeholder="二字定赔率"/>
-        </div>
-    </div>
-
+    </div>  
 </div>

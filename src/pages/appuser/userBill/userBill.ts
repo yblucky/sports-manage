@@ -103,7 +103,7 @@ export class UserBillPage {
      }
 
      Goto(item:any){
-         this.router.navigate(['/common/main/transaction/betsOrder'],{relativeTo: this.aroute,queryParams: { businessNumber: item.businessNumber }});
+         this.router.navigate(['/common/main/finance/betsOrder'],{relativeTo: this.aroute,queryParams: { businessNumber: item.businessNumber }});
      }
 
 }

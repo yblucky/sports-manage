@@ -21,7 +21,7 @@ import { RevenueListPage } from '../finance/revenueList/revenueList';
 export const MainRoutes: Routes = [ // Routes类型的数组
     {
         path     : '',
-        component: HomePage
+        component: UserPage
     },{
         path     : 'desktop/home',//首页
         component: HomePage
@@ -69,6 +69,6 @@ export const MainRoutes: Routes = [ // Routes类型的数组
         component: RevenueListPage
     },{
         path     : '**',
-        component: HomePage
+        component: UserPage
     },
 ];

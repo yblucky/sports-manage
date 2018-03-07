@@ -42,23 +42,20 @@
         </thead>
         <tbody>
             <tr *ngFor="let item of httpService.items; let i = index">
-                <td>{{i+1}}</td>
+                <td>{{item.id}}</td>
+                <td>重庆时时彩</td>
+                <td>{{item.issueNo}}</td>
+                <td>{{item.lotteryResult}}</td>
+                <td>{{item.gameState == 10 ? '已完成' :'未完成'}}</td>
                 <td>{{item.uid}}</td>
-                <td>{{item.nickName}}</td>
-                <td>{{item.mobile}}</td>
-                <td>{{item.amount}}</td>
-                <td>{{item.beforeBalance}}</td>
-                <td>{{item.branch}}</td>
-                <td>{{item.bankCard}}</td>
+                <td>{{item.nickname}}</td>
+                <td>{{item.betType == 10 ? '一字定' : '二字定'}}</td>
+                <td>{{item.betContent}}</td>
+                <td>{{item.betAmount}}</td>
+                <td>{{item.winningAmount}}</td>
+                <td>{{item.winningAmount}}</td>
                 <td>{{utils.formatDate(item.createTime,'yyyy-MM-dd HH:mm:ss')}}</td>
-                <td>{{item.state=="10"?"待打款":
-                      item.state=="20"?"成功":
-                      item.state=="30"?"驳回":"其他"}}
-                </td>
-                <td>
-                  <button type='button' *ngIf="item.state==10" (click)='confirmPayee(item)' class='btn btn-danger btn-xs'>确认打款</button>
-                  <button type="button" *ngIf="item.state==10" (click)="errorState(item)" class="btn btn-info btn-xs">驳回</button>
-                </td>
+                <td>{{item.state == 10 ? '未开奖':(item.state == 20 ? '已开奖':'已撤销')}}</td>
             </tr>
         </tbody>
     </table>
