@@ -234,11 +234,11 @@ export class UserPage {
                   $("#uid").focus();
                   return false;
               }
-              if(Utils.isMobile(userPage.rechargeData.balance)){
-                  layer.tips('请输入正确的数额', '#balance',{tips: 1});
-                  $("#balance").focus();
-                  return false;
-              }
+              // if(Utils.isMobile(userPage.rechargeData.balance)){
+              //     layer.tips('请输入正确的数额', '#balance',{tips: 1});
+              //     $("#balance").focus();
+              //     return false;
+              // }
               userPage.httpService.post({
                   url:'/webUser/recharge',
                   data:userPage.rechargeData

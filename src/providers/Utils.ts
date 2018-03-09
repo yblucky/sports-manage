@@ -17,12 +17,12 @@ export class Utils {
     //static FILE_SERVE_URL = 'http://dev.sutongbao.file.yb.com/';//文件服务器访问路径 开发
 
     static APP_SERVE_URL = 'http://127.0.0.1:8080/web';//请求路径 本地环境
-    static FILE_SERVE_URL = 'http://dev.sutongbao.file.yb.com/';//文件服务器访问路径 开发
+    //static FILE_SERVE_URL = 'http://dev.sutongbao.file.yb.com/';//文件服务器访问路径 开发
 
     //static APP_SERVE_URL = 'http://192.168.2.202:8920/web';//请求路径 测试环境
-    //static FILE_SERVE_URL = 'http://test.sutongbao.file.yb.com/';//文件服务器访问路径 测试
+    static FILE_SERVE_URL = 'http://test.sutongbao.file.yb.com/';//文件服务器访问路径 测试
 
-    //static APP_SERVE_URL = 'http://104.37.212.152:8070/web';//请求路径 正式环境
+    // static APP_SERVE_URL = 'http://120.76.43.39:8090/web';//请求路径 正式环境
     //static FILE_SERVE_URL = 'http://104.37.212.152:9999/';//文件服务器访问路径 正式
     //static APP_SERVE_URL = '/api/web';//请求路径 prod环境
 
