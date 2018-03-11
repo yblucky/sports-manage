@@ -15,6 +15,7 @@ var nowPage: any;
 export class BetsOrderPage {
     find:any={
       uid:"",
+      issueNo:"",
       mobile:"",
       state:"",
       startTime:"",
@@ -29,7 +30,7 @@ export class BetsOrderPage {
         this.aroute.params.subscribe( params  => {
             this.showTime = new Date();
         });
-        if(this.aroute.snapshot.queryParams["order"]!=undefined){
+        if(this.aroute.snapshot.queryParams["businessNumber"]!=undefined){
           this.find.businessNumber=this.aroute.snapshot.queryParams["businessNumber"];
           this.httpService.currentPage=1;
         }

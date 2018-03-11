@@ -2,6 +2,8 @@ import { Component } from "@angular/core";
 
 import {HttpService} from "../../../providers/HttpService";
 import {Utils} from "../../../providers/Utils";
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 declare var $: any;
 declare var layer: any;
@@ -19,6 +21,7 @@ export class AgentInfoPage {
     roles:any;
     agents:any;
     isEdit:boolean;
+    roleType:any;
     find:any={
       uid:"",
       mobile:"",
@@ -28,12 +31,13 @@ export class AgentInfoPage {
       agentLevelId:"",
       roleType:"20"
     };
-    constructor(private httpService:HttpService,private utils:Utils) {
+    constructor(private router:Router,private httpService:HttpService,private aroute:ActivatedRoute,private utils:Utils) {
         this.httpService.items = null;
         this.httpService.currentPage = 1;
         this.loadData();
         this.loadAgentLevel();
         nowPage = this;
+        this.roleType=sessionStorage.getItem('roleType');
     }
 
     /**
@@ -188,7 +192,7 @@ export class AgentInfoPage {
             btn: ['确定','取消'] //按钮
         }, function(){
             nowPage.httpService.post({
-                url:'/user/delete',
+                url:'/sysUser/delete',
                 data:item
             }).subscribe((data:any)=>{
                 layer.closeAll();
@@ -214,7 +218,7 @@ export class AgentInfoPage {
             btn: ['确定','取消'] //按钮
         }, function(){
             nowPage.httpService.post({
-                url:'/user/disable',
+                url:'/sysUser/disable',
                 data:item
             }).subscribe((data:any)=>{
                 layer.closeAll();
@@ -240,7 +244,7 @@ export class AgentInfoPage {
             btn: ['确定','取消'] //按钮
         }, function(){
             nowPage.httpService.post({
-                url:'/user/enabled',
+                url:'/sysUser/enabled',
                 data:item
             }).subscribe((data:any)=>{
                 layer.closeAll();
@@ -280,4 +284,8 @@ export class AgentInfoPage {
         }
         return true;
     }
+
+   Goto(item:any){
+       this.router.navigate(['/common/main/appuser/user'],{relativeTo: this.aroute,queryParams: { parentId: item.id}});
+   }
 }

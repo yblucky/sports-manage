@@ -36,6 +36,7 @@ export class MainPage {
         }).subscribe((data:any)=>{
             if(data.code==='0000'){
                 this.userName = data.data.userName;
+                sessionStorage.setItem('roleType',data.data.roleType);
                 //加载菜单
                 this.loadMenu(data.data.roleId);
             }else if(data.code==='9999'){

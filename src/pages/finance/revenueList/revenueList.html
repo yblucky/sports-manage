@@ -1,11 +1,12 @@
 
 <!--搜索区域-->
 <div class="search-box">
+      <!-- uid:<input [(ngModel)]="find.uid" /> -->
       手机:<input [(ngModel)]="find.mobile" />
       彩种:<select id =  "sel" [(ngModel)]="find.state">
             <option  value = "" >全部</option>
             <option  value = "10" >重庆时时彩</option>
-            <option  value = "20" >北京赛车</option>
+            <!-- <option  value = "20" >北京赛车</option> -->
           </select>
       时间:<input [(ngModel)]="find.startTime" type="date"/>-<input [(ngModel)]="find.endTime" type="date" />
       <button type="button" class="btn btn-primary" (click)='loadDataOne()'>搜索</button>
@@ -27,9 +28,11 @@
         <thead>
             <tr class="active">
                 <th>序号</th>
-                <th>代理编号</th>
+                <th>代理等级</th>
+                <!-- <th>代理uid</th> -->
+                <th>代理手机</th>
                 <th>代理昵称</th>
-                <th>下线人数</th>
+                <th>投注人数</th>
                 <th>投注积分</th>
                 <th>会员结果</th>
                 <th>备注</th>
@@ -39,7 +42,9 @@
         <tbody>
             <tr *ngFor="let item of httpService.items; let i = index">
                 <td>{{i+1}}</td>
-                <td>{{item.id}}</td>
+                <td>{{item.agentName}}</td>
+                <!-- <td>{{item.uid}}</td> -->
+                <td>{{item.mobile}}</td>
                 <td>{{item.userName}}</td>
                 <td>{{item.betCount}}</td>
                 <td>{{item.betScore}}</td>

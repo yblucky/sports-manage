@@ -19,15 +19,18 @@ export class UserPage {
       nickName:"",
       name:"",
       state:"",
+      parentId:"",
       credit:""
     };
     upUser:any={};
     rechargeData:any={};
+    upPwdData:any={};
     editDate:any={};
     showTime:any = new Date();
     showPage:any = 1;  //1:修改 2:显示等级
     userLower:any;
     userParent:any;
+    roleType:any;
 
 
 
@@ -60,7 +63,12 @@ export class UserPage {
         this.aroute.params.subscribe( params  => {
             this.showTime = new Date();
         });
+        if(this.aroute.snapshot.queryParams["parentId"]!=undefined){
+          this.find.parentId=this.aroute.snapshot.queryParams["parentId"];
+          this.httpService.currentPage=1;
+        }
         userPage=this;
+        this.roleType=sessionStorage.getItem('roleType');
         this.loadDataOne();
     }
 
@@ -226,11 +234,11 @@ export class UserPage {
             fixed: true,
             shadeClose: false,
             resize: false,
-            area: ['350px','250px'],
+            area: ['450px','250px'],
             content: $("#rechargePanel"),
             yes: function(index:number){
-              if(Utils.isEmpty(userPage.rechargeData.uid)){
-                  layer.tips('用户UID不能为空', '#uid',{tips: 1});
+              if(Utils.isEmpty(userPage.rechargeData.mobile)){
+                  layer.tips('会员UID/手机号不能为空', '#uid',{tips: 1});
                   $("#uid").focus();
                   return false;
               }
@@ -262,6 +270,55 @@ export class UserPage {
         });
     }
 
+
+
+        /**
+        * 弹出修改密码面板
+        */
+        showUpPwd(){
+            this.upPwdData = {
+                  uid: "",
+                  loginPwd: ""
+            };
+            layer.open({
+                title: "修改登录密码",
+                btn: ["保存","退出"],
+                type: 1,
+                closeBtn: 0,
+                shade: 0,
+                fixed: true,
+                shadeClose: false,
+                resize: false,
+                area: ['450px','250px'],
+                content: $("#upPwdPanel"),
+                yes: function(index:number){
+                  if(Utils.isEmpty(userPage.upPwdData.mobile)){
+                      layer.tips('会员UID/手机号不能为空', '#uid',{tips: 1});
+                      $("#uid").focus();
+                      return false;
+                  }
+                  userPage.httpService.post({
+                      url:'/webUser/upPwd',
+                      data:userPage.upPwdData
+                  }).subscribe((data:any)=>{
+                      layer.closeAll();
+                      if(data.code==='0000'){
+                          //修改成功
+                          layer.msg(data.message,{
+                              icon: '1',
+                              time: 2000
+                          },function(){
+                              userPage.loadData();
+                          });
+                      }else if(data.code==='9999'){
+                            Utils.show(data.message);
+                      }else{
+                            Utils.show("系统异常，请联系管理员");
+                      }
+                  });
+                }
+            });
+        }
     /**
     * 弹出编辑面板
     */

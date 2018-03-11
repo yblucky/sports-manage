@@ -38,6 +38,7 @@ export class RevenueListPage {
           this.httpService.currentPage=1;
         }
         nowPage=this;
+        this.loadData();
     }
 
     /**

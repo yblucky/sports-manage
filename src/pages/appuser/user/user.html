@@ -1,6 +1,6 @@
 
 <!--搜索区域-->
-<div class="search-box">
+<div class="search-box" *ngIf="roleType == 10">
       uid: <input [(ngModel)]="find.uid" />
       手机:<input [(ngModel)]="find.mobile" />
       昵称:<input [(ngModel)]="find.nickName"/>
@@ -15,7 +15,8 @@
 
 <!--按钮区域-->
 <div class="button-box text-right">
-      <button type="button" class="btn btn-primary" (click)="showRecharge()"><span class="fa fa-plus-circle"></span> 充值</button>
+      <button type="button" *ngIf="roleType == 10" class="btn btn-primary" (click)="showRecharge()"><span class="fa fa-plus-circle"></span> 充值</button>
+      <button type="button" *ngIf="roleType == 10" class="btn btn-primary" (click)="showUpPwd()"><span class="fa fa-plus-circle"></span> 修改密码</button>
 </div>
 
 <!--数据显示区域-->
@@ -26,6 +27,8 @@
                 <th>序号</th>
                 <th>uid</th>
                 <th>昵称</th>
+                <th>上级代理</th>
+                <th>上级代理级别</th>
                 <th>姓名</th>
                 <th>手机</th>
                 <th  (click)='loadDataScore()'>积分<span>↑↓</span></th>
@@ -42,19 +45,21 @@
                 <td>{{(i+1)}}</td>
                 <td>{{item.uid}}</td>
                 <td>{{item.nickName}}</td>
+                <td>{{item.agentName}}</td>
+                <td>{{item.agentLevel}}</td>
                 <td>{{item.name}}</td>
                 <td>{{item.mobile}}</td>
                 <td>{{item.balance}}</td>
                 <td>{{item.currentProfit}}</td>
                 <td>{{item.bettingAmout}}</td>
                 <td>{{item.winingAmout}}</td>
-                <td>{{utils.formatDate(item.createTime,'yyyy-MM-dd HH:mm:ss')}}</td> 
+                <td>{{utils.formatDate(item.createTime,'yyyy-MM-dd HH:mm:ss')}}</td>
                 <td>{{item.state==10?"正常":item.state==20?"禁用":"删除"}}</td>
                 <td>
                   <button type="button" *ngIf="item.state==20||item.state==10"(click)="showEditName(item)" class="btn btn-info btn-xs">编辑姓名</button>
                   <button type='button' *ngIf="item.state==10" (click)='disable(item)' class='btn btn-danger btn-xs'>禁用</button>
                   <button type='button' *ngIf="item.state==20" (click)='disable(item)' class='btn btn-info btn-xs'>启用</button>
-                   <button type="button" *ngIf="item.state==20||item.state==10"(click)="showGrade(item)" class="btn btn-info btn-xs">查看层级</button>
+                   <!-- <button type="button" *ngIf="item.state==20||item.state==10"(click)="showGrade(item)" class="btn btn-info btn-xs">查看层级</button> -->
                 <!--   <button type="button" *ngIf="item.state==20||item.state==10"(click)="deleteItem(item)" class="btn btn-danger btn-xs">删除</button>
                 <button type="button" *ngIf="item.state==20||item.state==10"(click)="bankCard(item)" class="btn btn-info btn-xs">银行卡</button> -->
                 </td>
@@ -85,15 +90,30 @@
 <!--充值页面-->
 <div id="rechargePanel" class="form-horizontal">
     <div class="form-group">
-        <label class="col-sm-4 control-label"><span class="text-danger" >*</span>&nbsp;用户UID</label>
+        <label class="col-sm-4 control-label"><span class="text-danger" >*</span>&nbsp;会员UID/手机号</label>
         <div class="col-sm-8">
-            <input type="text" class="form-control" id="uid"  [(ngModel)]="rechargeData.uid" placeholder="用户UID"/>
+            <input type="text" class="form-control" id="uid"  [(ngModel)]="rechargeData.mobile" placeholder="用户UID"/>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-4 control-label"><span class="text-danger" >*</span>&nbsp;充值数额</label>
         <div class="col-sm-8">
             <input type="text" class="form-control" id="balance"  [(ngModel)]="rechargeData.balance" placeholder="充值数额"/>
+        </div>
+    </div>
+</div>
+<!--修改页面-->
+<div id="upPwdPanel" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-sm-4 control-label"><span class="text-danger" >*</span>&nbsp;会员UID/手机号</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" id="uid"  [(ngModel)]="upPwdData.mobile" placeholder="用户UID"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-4 control-label"><span class="text-danger" >*</span>&nbsp;新登录密码</label>
+        <div class="col-sm-8">
+            <input type="password" class="form-control" id="balance"  [(ngModel)]="upPwdData.loginPwd" placeholder="新登录密码"/>
         </div>
     </div>
 </div>

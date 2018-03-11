@@ -1,7 +1,6 @@
 
 <!--搜索区域-->
-<div class="search-box">
-        uid: <input [(ngModel)]="find.uid" />
+<div class="search-box" *ngIf="roleType == 10">
         手机:<input [(ngModel)]="find.mobile" />
         用户名:<input [(ngModel)]="find.nickName"/>
         登录名:<input [(ngModel)]="find.name"/>
@@ -13,8 +12,8 @@
 </div>
 
 <!--按钮区域-->
-<div class="button-box text-right">
-    <button type="button" class="btn btn-primary" (click)="showAddPanel()"><span class="fa fa-plus-circle"></span> 新增</button>
+<div class="button-box text-right" >
+    <button type="button" class="btn btn-primary" *ngIf="roleType == 10" (click)="showAddPanel()"><span class="fa fa-plus-circle"></span> 新增</button>
 </div>
 
 <!--数据显示区域-->
@@ -30,6 +29,7 @@
                 <th>状态</th>
                 <th>今日返水</th>
                 <th>累计返水</th>
+                <th>下级会员</th>
                 <th>操作</th>
             </tr>
         </thead>
@@ -44,10 +44,13 @@
                 <td>{{item.totayReturnWater}}</td>
                 <td>{{item.totalReturnWater}}</td>
                 <td>
-                    <button type="button" (click)="showEditPanel(item)" class="btn btn-info btn-xs">编辑</button>
-                    <button type="button" (click)="deleteItem(item)" class="btn btn-danger btn-xs">删除</button>
-                    <button type="button" *ngIf="item.state==10" (click)="disableItem(item)" class="btn btn-danger btn-xs">禁用</button>
-                    <button type="button" *ngIf="item.state==20" (click)="enabledItem(item)" class="btn btn-info btn-xs">启用</button>
+                  <button type="button"  (click)="Goto(item)" class="btn btn-info btn-xs">查看会员</button>
+                </td>
+                <td>
+                    <button type="button" *ngIf="roleType == 10" (click)="showEditPanel(item)" class="btn btn-info btn-xs">编辑</button>
+                    <button type="button" *ngIf="roleType == 10" (click)="deleteItem(item)" class="btn btn-danger btn-xs">删除</button>
+                    <button type="button" *ngIf="item.state==10 && roleType == 10" (click)="disableItem(item)" class="btn btn-danger btn-xs">禁用</button>
+                    <button type="button" *ngIf="item.state==20 && roleType == 10" (click)="enabledItem(item)" class="btn btn-info btn-xs">启用</button>
                 </td>
             </tr>
         </tbody>

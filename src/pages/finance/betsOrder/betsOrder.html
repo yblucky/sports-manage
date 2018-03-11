@@ -3,14 +3,14 @@
 <div class="search-box">
       uid: <input [(ngModel)]="find.uid" />
       手机:<input [(ngModel)]="find.mobile" />
-      期号:<input [(ngModel)]="find.mobile" />
-      注单号:<input [(ngModel)]="find.mobile" />
+      期号:<input [(ngModel)]="find.issueNo" />
+      <!-- 注单号:<input [(ngModel)]="find.mobile" />
       彩种:<select id =  "sel" [(ngModel)]="find.state">
             <option  value = "" >全部</option>
             <option  value = "10" >重庆时时彩</option>
             <option  value = "20" >北京赛车</option>
-          </select>
-      投注时间:<input [(ngModel)]="find.startTime" type="date"/>-<input [(ngModel)]="find.endTime" type="date" />
+          </select> -->
+      投注时间:<input [(ngModel)]="find.startTime" type="date" />-<input [(ngModel)]="find.endTime" type="date" />
       <button type="button" class="btn btn-primary" (click)='loadDataOne()'>搜索</button>
 </div>
 
@@ -24,35 +24,37 @@
     <table class="table table-bordered table-hover">
         <thead>
             <tr class="active">
-                <th>注单号</th>
+                <th>序号</th>
                 <th>游戏彩种</th>
                 <th>游戏期号</th>
                 <th>开奖结果</th>
-                <th>游戏状态</th>
-                <th>uid</th>
-                <th>昵称</th>
+                <!-- <th>游戏状态</th> -->
+                <th>会员uid</th>
+                <th>会员手机</th>
+                <th>会员昵称</th>
                 <th>投注类型</th>
                 <th>投注内容</th>
                 <th>投注金额</th>
                 <th>输赢情况</th>
-                <th>赔率</th>
+                <!-- <th>赔率</th> -->
                 <th>投注时间</th>
                 <th>状态</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let item of httpService.items; let i = index">
-                <td>{{item.id}}</td>
+                <td>{{i+1}}</td>
                 <td>重庆时时彩</td>
                 <td>{{item.issueNo}}</td>
                 <td>{{item.lotteryResult}}</td>
-                <td>{{item.gameState == 10 ? '已完成' :'未完成'}}</td>
+                <!-- <td>{{item.gameState == 10 ? '已完成' :'未完成'}}</td> -->
                 <td>{{item.uid}}</td>
+                <td>{{item.mobile}}</td>
                 <td>{{item.nickname}}</td>
                 <td>{{item.betType == 10 ? '一字定' : '二字定'}}</td>
                 <td>{{item.betContent}}</td>
                 <td>{{item.betAmount}}</td>
-                <td>{{item.winningAmount}}</td>
+                <!-- <td>{{item.winningAmount}}</td> -->
                 <td>{{item.winningAmount}}</td>
                 <td>{{utils.formatDate(item.createTime,'yyyy-MM-dd HH:mm:ss')}}</td>
                 <td>{{item.state == 10 ? '未开奖':(item.state == 20 ? '已开奖':'已撤销')}}</td>
