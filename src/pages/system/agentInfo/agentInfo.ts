@@ -22,6 +22,7 @@ export class AgentInfoPage {
     agents:any;
     isEdit:boolean;
     roleType:any;
+    rechargeData:any={};
     find:any={
       uid:"",
       mobile:"",
@@ -265,6 +266,54 @@ export class AgentInfoPage {
         });
     }
 
+    /**
+    * 弹出充值面板
+    */
+    showRecharge(){
+        this.rechargeData = {
+              mobile: "",
+              balance: 0
+        };
+        layer.open({
+            title: "充值",
+            btn: ["保存","退出"],
+            type: 1,
+            closeBtn: 0,
+            shade: 0,
+            fixed: true,
+            shadeClose: false,
+            resize: false,
+            area: ['450px','250px'],
+            content: $("#rechargePanel"),
+            yes: function(index:number){
+              if(Utils.isEmpty(nowPage.rechargeData.mobile)){
+                  layer.tips('代理手机号不能为空', '#agentMobile',{tips: 1});
+                  $("#agentMobile").focus();
+                  return false;
+              }
+
+              nowPage.httpService.post({
+                  url:'/sysUser/recharge',
+                  data:nowPage.rechargeData
+              }).subscribe((data:any)=>{
+                  layer.closeAll();
+                  if(data.code==='0000'){
+                      //修改成功
+                      layer.msg(data.message,{
+                          icon: '1',
+                          time: 2000
+                      },function(){
+                          nowPage.loadData();
+                      });
+                  }else if(data.code==='9999'){
+                        Utils.show(data.message);
+                  }else{
+                        Utils.show("系统异常，请联系管理员");
+                  }
+              });
+            }
+        });
+    }
 
     validator(){
         if(Utils.isEmpty(this.subData.userName)){
