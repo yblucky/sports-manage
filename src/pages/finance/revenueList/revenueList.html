@@ -8,7 +8,7 @@
             <option  value = "10" >重庆时时彩</option>
             <!-- <option  value = "20" >北京赛车</option> -->
           </select>
-      时间:<input [(ngModel)]="find.startTime" type="date"/>-<input [(ngModel)]="find.endTime" type="date" />
+      时间:<input [(ngModel)]="find.startTime" style="width:15%" type="date"/>-<input [(ngModel)]="find.endTime" style="width:15%" type="date" />
       <button type="button" class="btn btn-primary" (click)='loadDataOne()'>搜索</button>
 </div>
 
@@ -32,11 +32,11 @@
                 <!-- <th>代理uid</th> -->
                 <th>代理手机</th>
                 <th>代理昵称</th>
-                <th>投注人数</th>
-                <th>投注积分</th>
-                <th>会员结果</th>
+                <!-- <th>投注人数</th> -->
+                <th>会员投注积分</th>
+                <th>会员盈利结果</th>
+                <th>代理返水情况</th>
                 <th>备注</th>
-                <th>实际盈亏</th>
             </tr>
         </thead>
         <tbody>
@@ -46,11 +46,11 @@
                 <!-- <td>{{item.uid}}</td> -->
                 <td>{{item.mobile}}</td>
                 <td>{{item.userName}}</td>
-                <td>{{item.betCount}}</td>
+                <!-- <td>{{item.betCount}}</td> -->
                 <td>{{item.betScore}}</td>
                 <td>{{item.memberRs}}</td>
-                <td>{{item.remark}}</td>
                 <td>{{item.agentProfit}}</td>
+                <td>{{item.remark}}</td>
             </tr>
         </tbody>
     </table>

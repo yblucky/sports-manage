@@ -12,7 +12,7 @@
                 <option  value="">全部</option>
                <option  *ngFor="let b of busnessType" value="{{b.key}}">{{b.val}}</option>
           </select>
-      交易时间:<input [(ngModel)]="find.startTime" type="date"/>-<input [(ngModel)]="find.endTime" type="date" />
+      交易时间:<input [(ngModel)]="find.startTime" style="width:15%" type="date"/>-<input [(ngModel)]="find.endTime" style="width:15%" type="date" />
       <button type="button" class="btn btn-primary" (click)='loadDataOne()'>搜索</button>
 </div>
 
