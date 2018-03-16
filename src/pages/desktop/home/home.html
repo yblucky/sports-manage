@@ -14,7 +14,7 @@
       <div class="row-tab" (click)="href('3')">
         <img src="/assets/images/tx.png"/>
         <h1>{{todayData.WithdrawCount}}</h1>
-        <div>待审核提现订单</div>
+        <div>今日提现额度</div>
       </div>
       <div class="row-tab" (click)="href('4')">
         <img src="/assets/images/STBzc.png"/>
@@ -89,6 +89,10 @@
          <div *ngFor="let item of coinManage; let i = index" class="statistics-content-tab">
              <h3>{{item.coinSUM}}</h3>
              <div>{{item.currencyName}}总数</div>
+        </div>
+        <div class="statistics-content-tab">
+          <h3>{{totalData.totalProfit}}</h3>
+          <div>用户盈亏总计</div>
         </div>
       </div>
     </div>
