@@ -49,7 +49,7 @@ export class UserBillPage {
 
       this.httpService.currentPage=1;
       this.loadData();
-      //this.loadType();
+      this.loadType();
     }
 
     /**
@@ -68,22 +68,6 @@ export class UserBillPage {
      * 加载过滤参数
      */
      loadType(){
-            this.httpService.get({
-                url:'/webBill/findCurrencyType'
-            }).subscribe((data:any)=>{
-                if(data.code==='0000'){
-                    this.currencyType = data.data;
-                    for (var prop in this.currencyType) {
-
-
-                    }
-                    console.log(this.currencyType);
-                }else if(data.code==='9999'){
-                    Utils.show(data.message);
-                }else{
-                    Utils.show("系统异常，请联系管理员");
-                }
-            });
 
             this.httpService.get({
                 url:'/webBill/findBusnessType'
