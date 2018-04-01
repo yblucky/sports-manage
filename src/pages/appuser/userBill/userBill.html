@@ -50,7 +50,7 @@
                 <td>{{utils.formatDate(item.createTime,'yyyy-MM-dd HH:mm:ss')}}</td>
                 <td>{{item.remark}}</td>
                 <td>
-                  <button type="button" *ngIf="item.busnessType==21||item.busnessType==22" (click)="Goto(item)" class="btn btn-info btn-xs">查看详情</button>
+                  <button type="button" *ngIf="item.busnessType==21||item.busnessType==22||item.busnessType==31||item.busnessType==32"  (click)="Goto(item)" class="btn btn-info btn-xs">查看详情</button>
                 </td>
             </tr>
         </tbody>

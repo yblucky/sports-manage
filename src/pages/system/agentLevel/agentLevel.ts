@@ -53,7 +53,12 @@ export class AgentLevelPage {
               maxagentLevelPerDay: "",
               maxBetSeats: "",
               maxBetDigitalNoPerSeat:"",
-              odds:""
+              odds:"",
+              minBetNoPerDigitalRace:"",
+              maxBetNoPerDigitalRace:"",
+              maxBetRracks:"",
+              maxBetNoPerRrack:"",
+              racingOdds:""
         };
 
         layer.open({
@@ -320,8 +325,28 @@ export class AgentLevelPage {
             return false;
         }
         if(this.subData.timeDoubleMaxBetKindPerTwoSeats <1 || this.subData.timeDoubleMaxBetKindPerTwoSeats >100){
-            layer.tips('最多组合位数(二字定)的范围再1-100', '#timeDoubleMaxBetKindPerTwoSeats',{tips: 1});
+            layer.tips('最多组合位数(二字定)的范围在1-100', '#timeDoubleMaxBetKindPerTwoSeats',{tips: 1});
             $("#timeDoubleMaxBetKindPerTwoSeats").focus();
+            return false;
+        }
+        if(this.subData.minBetNoPerDigitalRace <1){
+            layer.tips('单注赛车最小投注数量不能小于1', '#minBetNoPerDigitalRace',{tips: 1});
+            $("#minBetNoPerDigitalRace").focus();
+            return false;
+        }
+        if(this.subData.maxBetNoPerDigitalRace <1 || this.subData.minBetNoPerDigitalRace>this.subData.maxBetNoPerDigitalRace){
+            layer.tips('单注赛车最大投注数量不在合法范围内', '#maxBetNoPerDigitalRace',{tips: 1});
+            $("#maxBetNoPerDigitalRace").focus();
+            return false;
+        }
+        if(this.subData.maxBetRracks <1 || this.subData.maxBetRracks >10){
+            layer.tips('同时选赛道上限的范围在1-10', '#maxBetRracks',{tips: 1});
+            $("#maxBetRracks").focus();
+            return false;
+        }
+        if(this.subData.maxBetNoPerRrack <1 || this.subData.maxBetNoPerRrack >10){
+            layer.tips('单赛道不同选号上限的范围在1-10', '#maxBetNoPerRrack',{tips: 1});
+            $("#maxBetRracks").focus();
             return false;
         }
         return true;

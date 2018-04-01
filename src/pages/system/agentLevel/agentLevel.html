@@ -29,6 +29,11 @@
                 <th>最多组合位数(二字定)</th>
                 <th>最大下注金额(二字定)</th>
                 <th>二字定赔率</th>
+                <th>单注赛车最小投注数量</th>
+                <th>单注赛车最大投注数量</th>
+                <th>同时选赛道上限</th>
+                <th>单赛道不同选号上限</th>
+                <th>赛车赔率</th>
                 <th width="8%">操作</th>
             </tr>
         </thead>
@@ -49,6 +54,11 @@
                 <td>{{item.timeDoubleMaxBetKindPerTwoSeats}}</td>
                 <td>{{item.timeDoubleMaxBetNoPerKind}}</td>
                 <td>{{item.timeDoubleOdds}}</td>
+                <td>{{item.minBetNoPerDigitalRace}}</td>
+                <td>{{item.maxBetNoPerDigitalRace}}</td>
+                <td>{{item.maxBetRracks}}</td>
+                <td>{{item.maxBetNoPerRrack}}</td>
+                <td>{{item.racingOdds}}</td>
                 <td>
                     <button type="button" (click)="showEditPanel(item)" class="btn btn-info btn-xs">编辑</button>
                     <button type="button" (click)="deleteItem(item)" class="btn btn-danger btn-xs">删除</button>
@@ -147,6 +157,32 @@
         <label class="col-sm-2 control-label"><span class="text-danger">*</span>&nbsp;赔率(二字定)</label>
         <div class="col-sm-4">
             <input type="text"  class="form-control" id="timeDoubleMaxBetKindPerTwoSeats" [(ngModel)]="subData.timeDoubleOdds" placeholder="最多组合位数(二字定)"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label"><span class="text-danger">*</span>&nbsp;单注赛车最小投注数量</label>
+        <div class="col-sm-4">
+            <input type="text"  class="form-control" id="minBetNoPerDigitalRace" [(ngModel)]="subData.minBetNoPerDigitalRace" placeholder="单注赛车最小投注数量"/>
+        </div>
+        <label class="col-sm-2 control-label"><span class="text-danger">*</span>&nbsp;单注赛车最大投注数量</label>
+        <div class="col-sm-4">
+            <input type="text"  class="form-control" id="maxBetNoPerDigitalRace" [(ngModel)]="subData.maxBetNoPerDigitalRace" placeholder="单注赛车最大投注数量"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label"><span class="text-danger">*</span>&nbsp;同时选赛道上限</label>
+        <div class="col-sm-4">
+            <input type="text"  class="form-control" id="maxBetRracks" [(ngModel)]="subData.maxBetRracks" placeholder="同时选赛道上限"/>
+        </div>
+        <label class="col-sm-2 control-label"><span class="text-danger">*</span>&nbsp;单赛道不同选号上限</label>
+        <div class="col-sm-4">
+            <input type="text"  class="form-control" id="maxBetNoPerRrack" [(ngModel)]="subData.maxBetNoPerRrack" placeholder="单赛道不同选号上限"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label"><span class="text-danger">*</span>&nbsp;赛车赔率</label>
+        <div class="col-sm-4">
+            <input type="text"  class="form-control" id="racingOdds" [(ngModel)]="subData.racingOdds" placeholder="赛车赔率"/>
         </div>
     </div>
 </div>
