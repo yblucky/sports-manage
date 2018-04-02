@@ -3,11 +3,11 @@
 <div class="search-box">
       <!-- uid:<input [(ngModel)]="find.uid" /> -->
       手机:<input [(ngModel)]="find.mobile" />
-      彩种:<select id =  "sel" [(ngModel)]="find.state">
+      <!-- 彩种:<select id =  "sel" [(ngModel)]="find.state">
             <option  value = "" >全部</option>
             <option  value = "10" >重庆时时彩</option>
-            <!-- <option  value = "20" >北京赛车</option> -->
-          </select>
+            <option  value = "20" >北京赛车</option>
+          </select> -->
       时间:<input [(ngModel)]="find.startTime" style="width:15%" type="date"/>-<input [(ngModel)]="find.endTime" style="width:15%" type="date" />
       <button type="button" class="btn btn-primary" (click)='loadDataOne()'>搜索</button>
 </div>
@@ -53,6 +53,20 @@
                 <td>{{item.remark}}</td>
             </tr>
         </tbody>
+        <thead>
+            <tr class="active">
+                <th>累计</th>
+                <th></th>
+                <!-- <th>代理uid</th> -->
+                <th></th>
+                <th></th>
+                <!-- <th>投注人数</th> -->
+                <th>{{sumData.betScore}}</th>
+                <th>{{sumData.memberRs}}</th>
+                <th>{{sumData.agentProfit}}</th>
+                <th></th>
+            </tr>
+        </thead>
     </table>
 </div>
 

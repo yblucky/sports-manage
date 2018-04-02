@@ -21,6 +21,11 @@ export class RevenueListPage {
       endTime:"",
       dateType:""
     };
+    sumData:any={
+      betScore:0,
+      memberRs:0,
+      agentProfit:0
+    };
     judge:any={};
     orderType:string;
     editInfo:any={};
@@ -47,12 +52,26 @@ export class RevenueListPage {
     loadDataOne(){
       this.httpService.currentPage=1;
       this.loadData();
+      let datas = this.httpService.items;
+      let betScore=0;
+      let memberRs=0;
+      let agentProfit=0;
+      for (var i=0;i<datas.length;i++)
+      {
+        betScore=betScore+Utils.ifNull(datas[i].betScore,0);
+        memberRs=memberRs+Utils.ifNull(datas[i].memberRs,0);
+        agentProfit=agentProfit+Utils.ifNull(datas[i].agentProfit,0);
+      }
+      this.sumData.betScore=betScore;
+      this.sumData.memberRs=memberRs;
+      this.sumData.agentProfit=agentProfit;
     }
 
     /**
     * 加载数据
     */
     loadData(){
+        this.httpService.currentPage=1;
         this.httpService.pagination({
             url:'/finance/revenueList',
             data:this.find

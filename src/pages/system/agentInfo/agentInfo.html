@@ -2,8 +2,8 @@
 <!--搜索区域-->
 <div class="search-box" *ngIf="roleType == 10">
         手机:<input [(ngModel)]="find.mobile" />
-        用户名:<input [(ngModel)]="find.nickName"/>
-        登录名:<input [(ngModel)]="find.name"/>
+        用户名:<input [(ngModel)]="find.userName"/>
+        登录名:<input [(ngModel)]="find.loginName"/>
         等级:  <select  [(ngModel)]="find.agentLevelId" id =  "sel">
                 <option  value = "" >全部</option>
                 <option  *ngFor="let opt of agents" value="{{opt.id}}">{{opt.agentName}}</option>

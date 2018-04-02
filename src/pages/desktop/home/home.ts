@@ -51,6 +51,7 @@ export class HomePage {
                 this.todayData.todayRechgerAmount=Utils.ifNull(data.data.todayData.back_recharge,0);
                 this.todayData.WithdrawCount=Utils.ifNull(data.data.todayData.withdrawals,0);
                 this.todayData.currentProfit=Utils.ifNull(data.data.userSum.currentProfit,0);
+                this.totalData.totalProfit=Utils.ifNull(data.data.userSum.totalProfit,0);
                 this.todayData.totayReturnWater=Utils.ifNull(data.data.todayData.return_water,0);
                 this.registerUserCount=Utils.ifNull(data.data.registerUserCount,0);
                 this.totalData.totalUserCount=Utils.ifNull(data.data.userSum.userCount,0);
