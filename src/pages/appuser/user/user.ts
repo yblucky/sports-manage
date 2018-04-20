@@ -25,6 +25,7 @@ export class UserPage {
     upUser:any={};
     rechargeData:any={};
     upPwdData:any={};
+    upPayPwdData:any={};
     editDate:any={};
     showTime:any = new Date();
     showPage:any = 1;  //1:修改 2:显示等级
@@ -319,6 +320,55 @@ export class UserPage {
                 }
             });
         }
+        /**
+        * 弹出修改支付密码面板
+        */
+      showUpPayPwd(){
+        this.upPayPwdData = {
+              payUid: "",
+              payPwd: ""
+        };
+        layer.open({
+            title: "修改支付密码",
+            btn: ["保存","退出"],
+            type: 1,
+            closeBtn: 0,
+            shade: 0,
+            fixed: true,
+            shadeClose: false,
+            resize: false,
+            area: ['450px','250px'],
+            content: $("#upPayPwdPanel"),
+            yes: function(index:number){
+              if(Utils.isEmpty(userPage.upPayPwdData.mobile)){
+                  layer.tips('会员UID/手机号不能为空', '#payUid',{tips: 1});
+                  $("#payUid").focus();
+                  return false;
+              }
+              userPage.httpService.post({
+                  url:'/webUser/upPayPwd',
+                  data:userPage.upPayPwdData
+              }).subscribe((data:any)=>{
+                  layer.closeAll();
+                  if(data.code==='0000'){
+                      //修改成功
+                      layer.msg(data.message,{
+                          icon: '1',
+                          time: 2000
+                      },function(){
+                          userPage.loadData();
+                      });
+                  }else if(data.code==='9999'){
+                        Utils.show(data.message);
+                  }else{
+                        Utils.show("系统异常，请联系管理员");
+                  }
+              });
+            }
+        });
+    }
+
+
     /**
     * 弹出编辑面板
     */

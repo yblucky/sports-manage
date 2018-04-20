@@ -17,6 +17,7 @@
 <div class="button-box text-right">
       <button type="button"  class="btn btn-primary" (click)="showRecharge()"><span class="fa fa-plus-circle"></span> 充值</button>
       <button type="button"  class="btn btn-primary" (click)="showUpPwd()"><span class="fa fa-plus-circle"></span> 修改密码</button>
+      <button type="button"  class="btn btn-primary" (click)="showUpPayPwd()"><span class="fa fa-plus-circle"></span> 修改支付密码</button>
 </div>
 
 <!--数据显示区域-->
@@ -116,6 +117,21 @@
         <label class="col-sm-4 control-label"><span class="text-danger" >*</span>&nbsp;新登录密码</label>
         <div class="col-sm-8">
             <input type="password" class="form-control" id="balance"  [(ngModel)]="upPwdData.loginPwd" placeholder="新登录密码"/>
+        </div>
+    </div>
+</div>
+<!--修改支付密码页面-->
+<div id="upPayPwdPanel" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-sm-4 control-label"><span class="text-danger" >*</span>&nbsp;会员UID/手机号</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" id="payUid"  [(ngModel)]="upPayPwdData.mobile" placeholder="用户UID"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-4 control-label"><span class="text-danger" >*</span>&nbsp;新支付密码</label>
+        <div class="col-sm-8">
+            <input type="password" class="form-control" id="newPayPwd"  [(ngModel)]="upPayPwdData.payPwd" placeholder="新支付密码"/>
         </div>
     </div>
 </div>

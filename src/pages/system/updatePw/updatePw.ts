@@ -25,7 +25,7 @@ export class UpdatePwPage {
     submitData(){
         if(this.validator()){
             this.httpService.post({
-                url:'/user/updatePw',
+                url:'/sysUser/updatePw',
                 data:this.subData
             }).subscribe((data:any)=>{
                 layer.closeAll();
