@@ -43,7 +43,7 @@ export class RevenueListPage {
           this.httpService.currentPage=1;
         }
         nowPage=this;
-        this.loadData();
+        this.loadDataOne();
     }
 
     /**
@@ -52,6 +52,10 @@ export class RevenueListPage {
     loadDataOne(){
       this.httpService.currentPage=1;
       this.loadData();
+      this.loadSumData();
+    }
+
+    loadSumData(){
       let datas = this.httpService.items;
       let betScore=0;
       let memberRs=0;
@@ -66,7 +70,6 @@ export class RevenueListPage {
       this.sumData.memberRs=memberRs;
       this.sumData.agentProfit=agentProfit;
     }
-
     /**
     * 加载数据
     */
@@ -84,6 +87,8 @@ export class RevenueListPage {
     */
     showList(dateType:any){
       this.find.dateType=dateType;
+      this.find.startTime='';
+      this.find.endTime='';
       this.loadDataOne();
     }
 

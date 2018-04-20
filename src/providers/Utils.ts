@@ -24,8 +24,11 @@ export class Utils {
 
     //static APP_SERVE_URL = 'http://120.76.43.39:8090/web';//请求路径 正式环境
     static APP_SERVE_URL = 'http://manage.xilaifa1688.com/web';//请求路径 正式环境
+    //static APP_SERVE_URL = 'http://managetest.xilaifa1688.com/web';//请求路径 正式环境
     //static FILE_SERVE_URL = 'http://104.37.212.152:9999/';//文件服务器访问路径 正式
     //static APP_SERVE_URL = '/api/web';//请求路径 prod环境
+
+
 
     static DEFAULT_AVATAR = '/assets/images/avatar.png';//用户默认头像
     static PAGE_SIZE = 15;//默认分页大小
