@@ -36,7 +36,7 @@
                 <th>会员投注积分</th>
                 <th>会员盈利结果</th>
                 <th>代理返水情况</th>
-                <th>备注</th>
+                <th>纯利润</th>
             </tr>
         </thead>
         <tbody>
@@ -50,7 +50,7 @@
                 <td>{{item.betScore}}</td>
                 <td>{{item.memberRs}}</td>
                 <td>{{item.agentProfit}}</td>
-                <td>{{item.remark}}</td>
+                <td>{{-item.memberRs-item.agentProfit}}</td>
             </tr>
         </tbody>
         <thead>
@@ -64,7 +64,7 @@
                 <th>{{sumData.betScore}}</th>
                 <th>{{sumData.memberRs}}</th>
                 <th>{{sumData.agentProfit}}</th>
-                <th></th>
+                <th>{{sumData.returnProfit}}</th>
             </tr>
         </thead>
     </table>

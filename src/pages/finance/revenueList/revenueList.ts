@@ -24,7 +24,8 @@ export class RevenueListPage {
     sumData:any={
       betScore:0,
       memberRs:0,
-      agentProfit:0
+      agentProfit:0,
+      returnProfit:0
     };
     judge:any={};
     orderType:string;
@@ -60,6 +61,7 @@ export class RevenueListPage {
       let betScore=0;
       let memberRs=0;
       let agentProfit=0;
+      let returnProfit=0;
       for (var i=0;i<datas.length;i++)
       {
         betScore=betScore+Utils.ifNull(datas[i].betScore,0);
@@ -69,6 +71,7 @@ export class RevenueListPage {
       this.sumData.betScore=betScore;
       this.sumData.memberRs=memberRs;
       this.sumData.agentProfit=agentProfit;
+      this.sumData.returnProfit=-this.sumData.memberRs-this.sumData.agentProfit;
     }
     /**
     * 加载数据
