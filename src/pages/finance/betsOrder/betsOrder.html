@@ -39,6 +39,7 @@
                 <!-- <th>赔率</th> -->
                 <th>投注时间</th>
                 <th>状态</th>
+                <th>扩展</th>
             </tr>
         </thead>
         <tbody>
@@ -58,6 +59,9 @@
                 <td>{{item.winningAmount}}</td>
                 <td>{{utils.formatDate(item.createTime,'yyyy-MM-dd HH:mm:ss')}}</td>
                 <td>{{item.state == 10 ? '未开奖':(item.state == 20 ? '已开奖':'已撤销')}}</td>
+                <td>
+                  <button type="button" (click)="Goto(item)" class="btn btn-info btn-xs">查看投注总额</button>
+                </td>
             </tr>
         </tbody>
     </table>

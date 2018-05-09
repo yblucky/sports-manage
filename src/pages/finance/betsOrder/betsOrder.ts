@@ -113,7 +113,9 @@ export class BetsOrderPage {
         });
     }
 
-    Goto(item:any){
-        this.router.navigate(['/common/main/transaction/rechargeOrder'],{relativeTo: this.aroute,queryParams: { order: item.targetOrder }});
-    }
+
+     Goto(item:any){
+         this.router.navigate(['/common/main/appuser/userBill'],{relativeTo: this.aroute,queryParams: { businessNumber: item.businessNumber,busnessType:(item.state === '30' ?'23':'21') }});
+     }
+
 }

@@ -20,7 +20,8 @@ export class UserBillPage {
       busnessType:"",
       currencyType:"",
       endTime:"",
-      uuid:""
+      uuid:"",
+      businessNumber:""
     };
     currencyType:any;
     busnessType:any;
@@ -37,6 +38,14 @@ export class UserBillPage {
         }
         if(this.aroute.snapshot.queryParams["endTime"]!=undefined){
           this.find.endTime=this.aroute.snapshot.queryParams["endTime"];
+          this.httpService.currentPage=1;
+        }
+        if(this.aroute.snapshot.queryParams["businessNumber"]!=undefined){
+          this.find.businessNumber=this.aroute.snapshot.queryParams["businessNumber"];
+          this.httpService.currentPage=1;
+        }
+        if(this.aroute.snapshot.queryParams["busnessType"]!=undefined){
+          this.find.busnessType=this.aroute.snapshot.queryParams["busnessType"];
           this.httpService.currentPage=1;
         }
         this.loadDataOne();
