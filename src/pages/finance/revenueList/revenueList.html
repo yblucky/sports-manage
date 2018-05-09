@@ -47,10 +47,10 @@
                 <td>{{item.mobile}}</td>
                 <td>{{item.userName}}</td>
                 <!-- <td>{{item.betCount}}</td> -->
-                <td>{{item.betScore}}</td>
-                <td>{{item.memberRs}}</td>
-                <td>{{item.agentProfit}}</td>
-                <td>{{-item.memberRs-item.agentProfit}}</td>
+                <td>{{utils.toDecimal(item.betScore)}}</td>
+                <td>{{utils.toDecimal(item.memberRs)}}</td>
+                <td>{{utils.toDecimal(item.agentProfit)}}</td>
+                <td>{{utils.toDecimal(-item.memberRs-item.agentProfit)}}</td>
             </tr>
         </tbody>
         <thead>
@@ -61,10 +61,10 @@
                 <th></th>
                 <th></th>
                 <!-- <th>投注人数</th> -->
-                <th>{{sumData.betScore}}</th>
-                <th>{{sumData.memberRs}}</th>
-                <th>{{sumData.agentProfit}}</th>
-                <th>{{sumData.returnProfit}}</th>
+                <th>{{utils.toDecimal(sumData.betScore)}}</th>
+                <th>{{utils.toDecimal(sumData.memberRs)}}</th>
+                <th>{{utils.toDecimal(sumData.agentProfit)}}</th>
+                <th>{{utils.toDecimal(sumData.returnProfit)}}</th>
             </tr>
         </thead>
     </table>
