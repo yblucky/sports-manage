@@ -28,8 +28,8 @@
         <thead>
             <tr class="active">
                 <th>序号</th>
+                <th *ngIf="find.findDetail != ''">日期</th>
                 <th>代理等级</th>
-                <!-- <th>代理uid</th> -->
                 <th>代理手机</th>
                 <th>代理昵称</th>
                 <!-- <th>投注人数</th> -->
@@ -37,11 +37,13 @@
                 <th>会员盈利结果</th>
                 <th>代理返水情况</th>
                 <th>纯利润</th>
+                <th *ngIf="find.findDetail === ''">扩展</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let item of httpService.items; let i = index">
                 <td>{{i+1}}</td>
+                <td *ngIf="find.findDetail != ''">{{utils.formatDate(item.agentTime,'yyyy-MM-dd')}}</td>
                 <td>{{item.agentName}}</td>
                 <!-- <td>{{item.uid}}</td> -->
                 <td>{{item.mobile}}</td>
@@ -51,6 +53,7 @@
                 <td>{{utils.toDecimal(item.memberRs)}}</td>
                 <td>{{utils.toDecimal(item.agentProfit)}}</td>
                 <td>{{utils.toDecimal(-item.memberRs-item.agentProfit)}}</td>
+                <td *ngIf="find.findDetail === ''"><button type="button" (click)="showDetail(item)"  class="btn btn-info btn-xs">查看每日详情</button></td>
             </tr>
         </tbody>
         <thead>
@@ -65,6 +68,7 @@
                 <th>{{utils.toDecimal(sumData.memberRs)}}</th>
                 <th>{{utils.toDecimal(sumData.agentProfit)}}</th>
                 <th>{{utils.toDecimal(sumData.returnProfit)}}</th>
+                <th></th>
             </tr>
         </thead>
     </table>

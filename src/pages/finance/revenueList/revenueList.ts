@@ -19,6 +19,8 @@ export class RevenueListPage {
       state:"",
       startTime:"",
       endTime:"",
+      findDetail:"",
+      userId:"",
       dateType:""
     };
     sumData:any={
@@ -50,7 +52,7 @@ export class RevenueListPage {
     /**
     * 搜索默认第一页
     */
-    loadDataOne(){
+    loadDataOne(){ 
       this.httpService.currentPage=1;
       this.loadData();
       this.loadSumData();
@@ -92,6 +94,13 @@ export class RevenueListPage {
       this.find.dateType=dateType;
       this.find.startTime='';
       this.find.endTime='';
+      this.find.findDetail='';
+      this.find.userId='';
+      this.loadDataOne();
+    }
+    showDetail(item:any){
+      this.find.findDetail="4444";
+      this.find.userId=item.id;
       this.loadDataOne();
     }
 
