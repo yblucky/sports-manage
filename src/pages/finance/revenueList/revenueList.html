@@ -57,8 +57,9 @@
             </tr>
         </tbody>
         <thead>
-            <tr class="active">
+            <tr class="active" *ngIf="find.findDetail === ''">
                 <th>累计</th>
+                <th *ngIf="find.findDetail != ''"></th>
                 <th></th>
                 <!-- <th>代理uid</th> -->
                 <th></th>
@@ -68,7 +69,7 @@
                 <th>{{utils.toDecimal(sumData.memberRs)}}</th>
                 <th>{{utils.toDecimal(sumData.agentProfit)}}</th>
                 <th>{{utils.toDecimal(sumData.returnProfit)}}</th>
-                <th></th>
+                <th *ngIf="find.findDetail === ''"></th>
             </tr>
         </thead>
     </table>

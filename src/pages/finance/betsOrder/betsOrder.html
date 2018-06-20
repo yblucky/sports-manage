@@ -16,7 +16,7 @@
 
 <!--按钮区域-->
 <div class="button-box text-right">
-
+  <button *ngIf="find.state != '10'" type="button" class="btn btn-primary" (click)="goBack()"><span class="fa fa-plus-circle"></span> 返回上一页</button>
 </div>
 
 <!--数据显示区域-->
@@ -25,42 +25,42 @@
         <thead>
             <tr class="active">
                 <th>序号</th>
-                <th>游戏彩种</th>
+                <th *ngIf="find.state != '10'">游戏彩种</th>
                 <th>游戏期号</th>
-                <th>开奖结果</th>
+                <th *ngIf="find.state != '10'">开奖结果</th>
                 <!-- <th>游戏状态</th> -->
                 <th>会员uid</th>
                 <th>会员手机</th>
                 <th>会员昵称</th>
-                <th>投注类型</th>
-                <th>投注内容</th>
-                <th>投注金额</th>
+                <th *ngIf="find.state != '10'">投注类型</th>
+                <th *ngIf="find.state != '10'">投注内容</th>
+                <th>下注金额</th>
                 <th>输赢情况</th>
                 <!-- <th>赔率</th> -->
                 <th>投注时间</th>
-                <th>状态</th>
+                <th *ngIf="find.state != '10'">状态</th>
                 <th>扩展</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let item of httpService.items; let i = index">
                 <td>{{i+1}}</td>
-                <td>{{item.gameType == 10 ? '重庆时时彩' : '北京赛车'}}</td>
+                <td *ngIf="find.state != '10'">{{item.gameType == 10 ? '重庆时时彩' : '北京赛车'}}</td>
                 <td>{{item.issueNo}}</td>
-                <td>{{item.lotteryResult}}</td>
+                <td *ngIf="find.state != '10'">{{item.lotteryResult}}</td>
                 <!-- <td>{{item.gameState == 10 ? '已完成' :'未完成'}}</td> -->
                 <td>{{item.uid}}</td>
                 <td>{{item.mobile}}</td>
                 <td>{{item.nickname}}</td>
-                <td>{{item.betType == 10 || item.betType == '' || item.betType == null ? '一字定' : '二字定'}}</td>
-                <td>{{item.betContent}}</td>
-                <td>{{item.betAmount}}</td>
+                <td *ngIf="find.state != '10'">{{item.betType == 10 || item.betType == '' || item.betType == null ? '一字定' : '二字定'}}</td>
+                <td *ngIf="find.state != '10'">{{item.betContent}}</td>
+                <td>{{utils.toDecimal(item.betAmount)}}</td>
                 <!-- <td>{{item.winningAmount}}</td> -->
-                <td>{{item.winningAmount}}</td>
+                <td>{{utils.toDecimal(item.winningAmount)}}</td>
                 <td>{{utils.formatDate(item.createTime,'yyyy-MM-dd HH:mm:ss')}}</td>
-                <td>{{item.state == 10 ? '未开奖':(item.state == 20 ? '已开奖':'已撤销')}}</td>
+                <td *ngIf="find.state != '10'">{{item.state == 10 ? '未开奖':(item.state == 20 ? '已开奖':'已撤销')}}</td>
                 <td>
-                  <button type="button" (click)="Goto(item)" class="btn btn-info btn-xs">查看投注总额</button>
+                  <button  *ngIf="find.state == '10'" type="button" (click)="showDetail(item)" class="btn btn-info btn-xs">查看详情</button>
                 </td>
             </tr>
         </tbody>

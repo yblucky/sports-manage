@@ -17,7 +17,7 @@ export class BetsOrderPage {
       uid:"",
       issueNo:"",
       mobile:"",
-      state:"",
+      state:"10",
       startTime:"",
       endTime:"",
       businessNumber:""
@@ -32,6 +32,7 @@ export class BetsOrderPage {
         });
         if(this.aroute.snapshot.queryParams["businessNumber"]!=undefined){
           this.find.businessNumber=this.aroute.snapshot.queryParams["businessNumber"];
+          this.find.state="20";
           this.httpService.currentPage=1;
         }
         if(this.aroute.snapshot.queryParams["state"]!=undefined){
@@ -112,7 +113,17 @@ export class BetsOrderPage {
             });
         });
     }
+     showDetail(item:any){
+        this.find.state="20";
+        this.find.businessNumber=item.businessNumber;
+        this.loadDataOne();
+     }
 
+    goBack(){
+       this.find.state="10";
+       this.find.businessNumber="";
+       this.loadDataOne();
+    }
 
      Goto(item:any){
          this.router.navigate(['/common/main/appuser/userBill'],{relativeTo: this.aroute,queryParams: { businessNumber: item.businessNumber,busnessType:(item.state === '30' ?'23':'21') }});
